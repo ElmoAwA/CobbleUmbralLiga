@@ -128,7 +128,10 @@ h1 {
 main { padding: 1.6rem 6vw 2rem; }
 .section-label {
   font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 1.1rem; color: var(--text);
-  margin: 2rem 0 0.9rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line);
+  margin: 2rem 0 0.3rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line);
+}
+.section-sub {
+  font-size: 0.8rem; color: var(--text-faint); margin: -0.55rem 0 0.9rem; font-style: italic;
 }
 .grid {
   display: grid; grid-template-columns: repeat(auto-fill,minmax(126px,1fr)); gap: 0.7rem;
@@ -139,6 +142,14 @@ main { padding: 1.6rem 6vw 2rem; }
   display: flex; flex-direction: column; align-items: center; text-align: center;
 }
 .card:hover, .card.pinned { border-color: var(--violet); transform: translateY(-2px); }
+.card.banned { border-color: #4a2230; background: #241823; }
+.card.banned:hover, .card.banned.pinned { border-color: #ff5b7a; }
+.card.banned .img-wrap img { filter: grayscale(75%) drop-shadow(0 4px 10px rgba(0,0,0,0.4)); opacity: 0.75; }
+.card .ban-tag {
+  position: absolute; top: 6px; left: 6px; font-size: 0.6rem; font-family: 'Rajdhani', sans-serif; font-weight: 700;
+  color: #ff5b7a; letter-spacing: 0.02em; background: rgba(255,91,122,0.12); border: 1px solid #ff5b7a;
+  border-radius: 4px; padding: 1px 5px;
+}
 .card .badge-cat {
   position: absolute; top: 6px; left: 6px; font-size: 0.6rem; font-family: 'Rajdhani', sans-serif; font-weight: 600;
   color: var(--amber); letter-spacing: 0.02em; opacity: 0.85;
@@ -340,11 +351,12 @@ footer a { color: var(--text-dim); }
     <div class="month-badge" id="month-badge">Regulación · Septiembre 2026</div>
   </div>
   <div class="hero-stats">
+    <div class="stat"><b id="stat-reclutamiento">—</b><span>Reclutamiento Umbral</span></div>
+    <div class="stat"><b id="stat-prohibicion">—</b><span>Prohibición Umbral</span></div>
     <div class="stat"><b id="stat-comun">—</b><span>Comunes en rotación</span></div>
     <div class="stat"><b id="stat-pseudo">—</b><span>Pseudo-legendarios</span></div>
     <div class="stat"><b id="stat-legendario">—</b><span>Legendarios</span></div>
     <div class="stat"><b id="stat-ultraente">—</b><span>Ultra Entes</span></div>
-    <div class="stat"><b id="stat-reclutamiento">—</b><span>Reclutamiento Umbral</span></div>
   </div>
 </header>
 
@@ -390,8 +402,11 @@ footer a { color: var(--text-dim); }
 <script>
 /* ---------------- DATA ---------------- */
 const ROSTER = [
-["Staraptor","reclutamiento","staraptor"],["Lucario","reclutamiento","lucario"],["Raichu","reclutamiento","raichu"],
-  
+["Spinda","reclutamiento","spinda"],
+
+
+["Spinda","prohibicion","spinda"],
+
 ["Gengar","comun","gengar"],["Slowbro","comun","slowbro"],["Slowbro","comun","slowbro-galar","Galar"],
 ["Slowking","comun","slowking"],["Slowking","comun","slowking-galar","Galar"],
 ["Arcanine","comun","arcanine"],["Arcanine","comun","arcanine-hisui","Hisui"],
@@ -464,12 +479,14 @@ const ROSTER = [
 
 const CATS = {
   reclutamiento:{label:"Reclutamiento Umbral", plural:"reclutamiento"},
+  prohibicion:{label:"Prohibición Umbral", plural:"prohibicion"},
   comun:{label:"Comunes", plural:"comunes"},
   pseudo:{label:"Pseudo-legendarios", plural:"pseudo"},
   legendario:{label:"Legendarios", plural:"legendarios"},
   ultraente:{label:"Ultra Entes", plural:"ultraente"},
 };
-const CAT_ORDER = ["comun","pseudo","legendario","ultraente","reclutamiento"];
+const CAT_ORDER = ["reclutamiento","prohibicion","comun","pseudo","legendario","ultraente"];
+const COMMUNITY_CATS = new Set(["reclutamiento","prohibicion"]);
 
 const TYPE_ES = {
   normal:"Normal", fire:"Fuego", water:"Agua", electric:"Eléctrico", grass:"Planta",
@@ -688,8 +705,7 @@ async function loadAll(){
     while(i < slugs.length){
       const idx = i++;
       await fetchMon(slugs[idx]);
-      const card = document.querySelector(`[data-slug="${slugs[idx]}"]`);
-      if(card) paintCard(card, slugs[idx]);
+      document.querySelectorAll(`[data-slug="${slugs[idx]}"]`).forEach(card=>paintCard(card, slugs[idx]));
     }
   }
   await Promise.all(Array.from({length:CONC}, worker));
@@ -744,16 +760,23 @@ function render(){
     label.textContent = CATS[cat].label;
     main.appendChild(label);
 
+    if(COMMUNITY_CATS.has(cat)){
+      const sub = document.createElement("div");
+      sub.className = "section-sub";
+      sub.textContent = "Elegido por la comunidad";
+      main.appendChild(sub);
+    }
+
     const grid = document.createElement("div");
     grid.className = "grid";
     items.forEach(entry=>{
       const [name, cat2, slug, form] = entry;
       const card = document.createElement("div");
-      card.className = "card";
+      card.className = "card" + (cat2 === "prohibicion" ? " banned" : "");
       card.dataset.slug = slug;
       card.dataset.name = name;
       card.innerHTML = `
-        ${form ? `<span class="form-tag">${form}</span>`:""}
+        ${cat2 === "prohibicion" ? `<span class="ban-tag">Prohibido</span>` : (form ? `<span class="form-tag">${form}</span>`:"")}
         <div class="img-wrap"><div class="skel"></div></div>
         <div class="name">${name}${form?` <span style="color:var(--text-faint);font-weight:500;">(${form})</span>`:""}</div>
         <div class="types"></div>

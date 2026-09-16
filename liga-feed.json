@@ -1,0 +1,23 @@
+{
+  "temporada": "Liga Umbral · Regulación Septiembre 2026",
+  "semana_actual": 2,
+  "ultima_actualizacion": "Actualización semanal acumulativa de Reclutamiento y Prohibición.",
+  "reclutamiento_total": [
+    { "name": "Raichu", "slug": "raichu", "semana": 1 },
+    { "name": "Basculegion", "slug": "basculegion-male", "semana": 1 },
+    { "name": "Flapple", "slug": "flapple", "semana": 1 },
+    { "name": "Appletun", "slug": "appletun", "semana": 1 },
+    { "name": "Dipplin", "slug": "dipplin", "semana": 1 },
+    { "name": "Hydrapple", "slug": "hydrapple", "semana": 2 },
+    { "name": "Annihilape", "slug": "annihilape", "semana": 2 },
+    { "name": "Sneasler", "slug": "sneasler", "semana": 2 }
+  ],
+  "prohibicion_total": [
+    { "name": "Darmanitan (Galar)", "slug": "darmanitan-galar-standard", "semana": 1 },
+    { "name": "Greninja", "slug": "greninja", "semana": 1 },
+    { "name": "Greninja (Ash)", "slug": "greninja-ash", "semana": 1 },
+    { "name": "Greninja (Fuerte Afecto)", "slug": "greninja-battle-bond", "semana": 1 },
+    { "name": "Toxapex", "slug": "toxapex", "semana": 2 },
+    { "name": "Meowscarada", "slug": "meowscarada", "semana": 2 }
+  ]
+}

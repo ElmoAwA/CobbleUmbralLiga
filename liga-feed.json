@@ -18,6 +18,8 @@
     { "name": "Greninja (Ash)", "slug": "greninja-ash", "semana": 1 },
     { "name": "Greninja (Fuerte Afecto)", "slug": "greninja-battle-bond", "semana": 1 },
     { "name": "Toxapex", "slug": "toxapex", "semana": 2 },
-    { "name": "Meowscarada", "slug": "meowscarada", "semana": 2 }
+    { "name": "Meowscarada", "slug": "meowscarada", "semana": 2 },
+    { "name": "Ferroseed", "slug": "ferroseed", "semana": 2 },
+    { "name": "Ferrothorn", "slug": "ferrothorn", "semana": 2 }
   ]
 }

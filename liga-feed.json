@@ -5,12 +5,13 @@
   "reclutamiento_total": [
     { "name": "Raichu", "slug": "raichu", "semana": 1 },
     { "name": "Basculegion", "slug": "basculegion-male", "semana": 1 },
-    { "name": "Flapple", "slug": "flapple", "semana": 1 },
-    { "name": "Appletun", "slug": "appletun", "semana": 1 },
-    { "name": "Dipplin", "slug": "dipplin", "semana": 1 },
+    { "name": "Flapple", "slug": "flapple", "semana": 2 },
+    { "name": "Appletun", "slug": "appletun", "semana": 2 },
+    { "name": "Dipplin", "slug": "dipplin", "semana": 2 },
     { "name": "Hydrapple", "slug": "hydrapple", "semana": 2 },
-    { "name": "Annihilape", "slug": "annihilape", "semana": 2 },
-    { "name": "Sneasler", "slug": "sneasler", "semana": 2 }
+    { "name": "Annihilape", "slug": "annihilape", "semana": 3 },
+    { "name": "Sneasler", "slug": "sneasler", "semana": 3 },
+    { "name": "Haxorus", "slug": "haxorus", "semana": 4 }
   ],
   "prohibicion_total": [
     { "name": "Darmanitan (Galar)", "slug": "darmanitan-galar-standard", "semana": 1 },
@@ -18,8 +19,9 @@
     { "name": "Greninja (Ash)", "slug": "greninja-ash", "semana": 1 },
     { "name": "Greninja (Fuerte Afecto)", "slug": "greninja-battle-bond", "semana": 1 },
     { "name": "Toxapex", "slug": "toxapex", "semana": 2 },
-    { "name": "Meowscarada", "slug": "meowscarada", "semana": 2 },
-    { "name": "Ferroseed", "slug": "ferroseed", "semana": 2 },
-    { "name": "Ferrothorn", "slug": "ferrothorn", "semana": 2 }
+    { "name": "Meowscarada", "slug": "meowscarada", "semana": 3 },
+    { "name": "Ferroseed", "slug": "ferroseed", "semana": 3 },
+    { "name": "Ferrothorn", "slug": "ferrothorn", "semana": 3 },
+    { "name": "Skeledirge", "slug": "skeledirge", "semana": 4 }
   ]
 }

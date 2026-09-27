@@ -131,7 +131,7 @@ main { padding: 1.6rem 6vw 2rem; }
   margin: 2rem 0 0.3rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line);
 }
 .section-sub {
-  font-size: 0.8rem; color: var(--text-faint); margin: -0.2rem 0 0.9rem; font-style: italic;
+  font-size: 0.8rem; color: var(--text-faint); margin: -0.55rem 0 0.9rem; font-style: italic;
 }
 .grid {
   display: grid; grid-template-columns: repeat(auto-fill,minmax(126px,1fr)); gap: 0.7rem;
@@ -145,17 +145,20 @@ main { padding: 1.6rem 6vw 2rem; }
 .card.banned { border-color: #4a2230; background: #241823; }
 .card.banned:hover, .card.banned.pinned { border-color: #ff5b7a; }
 .card.banned .img-wrap img { filter: grayscale(75%) drop-shadow(0 4px 10px rgba(0,0,0,0.4)); opacity: 0.75; }
-.card.prison { border-color: #4b306b; background: #20172d; }
-.card.prison:hover, .card.prison.pinned { border-color: #a370f7; }
-.card.prison .img-wrap img { filter: grayscale(40%) drop-shadow(0 4px 10px rgba(0,0,0,0.4)); opacity: 0.8; }
 .card .ban-tag {
   position: absolute; top: 6px; left: 6px; font-size: 0.6rem; font-family: 'Rajdhani', sans-serif; font-weight: 700;
   color: #ff5b7a; letter-spacing: 0.02em; background: rgba(255,91,122,0.12); border: 1px solid #ff5b7a;
   border-radius: 4px; padding: 1px 5px;
 }
-.card .prison-tag {
+.card.jailed { border-color: #eed7ff; background: #1f1830; }
+.card.jailed:hover, .card.jailed.pinned { border-color: #b47bff; }
+.card.jailed .img-wrap img {
+  filter: grayscale(60%) sepia(65%) hue-rotate(220deg) brightness(0.95) drop-shadow(0 4px 10px rgba(0,0,0,0.4));
+  opacity: 0.9;
+}
+.card .jail-tag {
   position: absolute; top: 6px; left: 6px; font-size: 0.6rem; font-family: 'Rajdhani', sans-serif; font-weight: 700;
-  color: #a370f7; letter-spacing: 0.02em; background: rgba(163,112,247,0.15); border: 1px solid #a370f7;
+  color: #b47bff; letter-spacing: 0.02em; background: rgba(180,123,255,0.14); border: 1px solid #b47bff;
   border-radius: 4px; padding: 1px 5px;
 }
 .card .badge-cat {
@@ -359,9 +362,9 @@ footer a { color: var(--text-dim); }
     <div class="month-badge" id="month-badge">Regulación · Octubre 2026</div>
   </div>
   <div class="hero-stats">
+    <div class="stat"><b id="stat-prision">—</b><span>Prisión</span></div>
     <div class="stat"><b id="stat-reclutamiento">—</b><span>Reclutamiento Umbral</span></div>
     <div class="stat"><b id="stat-prohibicion">—</b><span>Prohibición Umbral</span></div>
-    <div class="stat"><b id="stat-prision">—</b><span>Prisión Umbral</span></div>
     <div class="stat"><b id="stat-comun">—</b><span>Comunes en rotación</span></div>
     <div class="stat"><b id="stat-pseudo">—</b><span>Pseudo-legendarios</span></div>
     <div class="stat"><b id="stat-legendario">—</b><span>Legendarios</span></div>
@@ -411,250 +414,229 @@ footer a { color: var(--text-dim); }
 <script>
 /* ---------------- DATA ---------------- */
 const ROSTER = [
-  // --- RECLUTAMIENTO UMBRAL (#767 - #768) ---
-  ["Wimpod", "reclutamiento", "wimpod"],
-  ["Golisopod", "reclutamiento", "golisopod"],
+/* --- Prisión (categoría nueva e independiente) --- */
+["Darmanitan","prision","darmanitan-galar-standard","Galar"],
+["Ferrothorn","prision","ferrothorn"],
+["Greninja","prision","greninja"],
+["Greninja","prision","greninja-ash","Ash"],
+["Greninja","prision","greninja-battle-bond","Fuerte Afecto"],
+["Toxapex","prision","toxapex"],
+["Meowscarada","prision","meowscarada"],
+["Skeledirge","prision","skeledirge"],
+["Raichu","prision","raichu"],
+["Haxorus","prision","haxorus"],
+["Basculegion","prision","basculegion-male"],
+["Flapple","prision","flapple"],
+["Appletun","prision","appletun"],
+["Sneasler","prision","sneasler"],
+["Dipplin","prision","dipplin"],
+["Hydrapple","prision","hydrapple"],
+["Annihilape","prision","annihilape"],
 
-  // --- PROHIBICIÓN UMBRAL (Vacío) ---
+/* --- Reclutamiento Umbral (lista original, sin cambios) --- */
+["Golisopod","reclutamiento","golisopod"],
 
-  // --- PRISIÓN UMBRAL ---
-  ["Raichu", "prision", "raichu"],                                    // #0026
-  ["Darmanitan", "prision", "darmanitan-galar-standard", "Galar"],   // #0555
-  ["Ferrothorn", "prision", "ferrothorn"],                            // #0598
-  ["Haxorus", "prision", "haxorus"],                                  // #0612
-  ["Greninja", "prision", "greninja"],                                // #0658
-  ["Greninja", "prision", "greninja-ash", "Ash"],                     // #0658
-  ["Greninja", "prision", "greninja-battle-bond", "Fuerte Afecto"],   // #0658
-  ["Toxapex", "prision", "toxapex"],                                  // #0748
-  ["Flapple", "prision", "flapple"],                                  // #0841
-  ["Appletun", "prision", "appletun"],                                // #0842
-  ["Sneasler", "prision", "sneasler"],                                // #0903
-  ["Basculegion", "prision", "basculegion-male"],                     // #0902
-  ["Meowscarada", "prision", "meowscarada"],                          // #0908
-  ["Skeledirge", "prision", "skeledirge"],                            // #0911
-  ["Annihilape", "prision", "annihilape"],                            // #0979
-  ["Dipplin", "prision", "dipplin"],                                  // #1011
-  ["Hydrapple", "prision", "hydrapple"],                              // #1019
+/* --- Prohibición Umbral (lista original, sin cambios) --- */
+["Unown","prohibicion","unown"],
 
-  // --- LEGENDARIOS ---
-  ["Kyogre", "legendario", "kyogre"],                                 // #0382
-  ["Groudon", "legendario", "groudon"],                               // #0383
-  ["Tornadus", "legendario", "tornadus-incarnate"],                   // #0641
-  ["Thundurus", "legendario", "thundurus-incarnate"],                 // #0642
-  ["Landorus", "legendario", "landorus-incarnate"],                   // #0645
+/* --- Legendarios --- */
+["Thundurus","legendario","thundurus-incarnate"],
+["Tornadus","legendario","tornadus-incarnate"],
+["Landorus","legendario","landorus-incarnate"],
+["Kyogre","legendario","kyogre"],
+["Groudon","legendario","groudon"],
 
-  // --- PSEUDOLEGENDARIOS ---
-  ["Dragonite", "pseudo", "dragonite"],                               // #0149
-  ["Tyranitar", "pseudo", "tyranitar"],                               // #0248
-  ["Baxcalibur", "pseudo", "baxcalibur"],                             // #0998
+/* --- Pseudolegendarios --- */
+["Dragonite","pseudo","dragonite"],
+["Tyranitar","pseudo","tyranitar"],
+["Baxcalibur","pseudo","baxcalibur"],
 
-  // --- ULTRAENTES ---
-  ["Pheromosa", "ultraente", "pheromosa"],                            // #0795
-  ["Naganadel", "ultraente", "naganadel"],                            // #0803
+/* --- Ultraentes --- */
+["Pheromosa","ultraente","pheromosa"],
+["Naganadel","ultraente","naganadel"],
 
-  // --- COMUNES (Ordenados de #0034 a #0992) ---
-  // Gen 1 (#0034 - #0143)
-  ["Nidoking", "comun", "nidoking"],                                  // #0034
-  ["Ninetales", "comun", "ninetales"],                                // #0038
-  ["Ninetales", "comun", "ninetales-alola", "Alola"],                 // #0038
-  ["Arcanine", "comun", "arcanine"],                                  // #0059
-  ["Arcanine", "comun", "arcanine-hisui", "Hisui"],                   // #0059
-  ["Poliwrath", "comun", "poliwrath"],                                // #0062
-  ["Tentacruel", "comun", "tentacruel"],                              // #0073
-  ["Slowbro", "comun", "slowbro"],                                    // #0080
-  ["Slowbro", "comun", "slowbro-galar", "Galar"],                     // #0080
-  ["Gengar", "comun", "gengar"],                                      // #0094
-  ["Exeggutor", "comun", "exeggutor"],                                // #0103
-  ["Pinsir", "comun", "pinsir"],                                      // #0127
-  ["Tauros", "comun", "tauros"],                                      // #0128
-  ["Tauros", "comun", "tauros-paldea-combat-breed", "Combate"],       // #0128
-  ["Tauros", "comun", "tauros-paldea-blaze-breed", "Llama"],          // #0128
-  ["Tauros", "comun", "tauros-paldea-aqua-breed", "Acuático"],        // #0128
-  ["Gyarados", "comun", "gyarados"],                                  // #0130
-  ["Eevee", "comun", "eevee"],                                        // #0133
-  ["Vaporeon", "comun", "vaporeon"],                                  // #0134
-  ["Jolteon", "comun", "jolteon"],                                    // #0135
-  ["Flareon", "comun", "flareon"],                                    // #0136
-  ["Porygon", "comun", "porygon"],                                    // #0137
-  ["Snorlax", "comun", "snorlax"],                                    // #0143
+/* --- Comunes: Gen 1 --- */
+["Nidoking","comun","nidoking"],
+["Ninetales","comun","ninetales"],["Ninetales","comun","ninetales-alola","Alola"],
+["Arcanine","comun","arcanine"],["Arcanine","comun","arcanine-hisui","Hisui"],
+["Poliwrath","comun","poliwrath"],
+["Tentacruel","comun","tentacruel"],
+["Slowbro","comun","slowbro"],["Slowbro","comun","slowbro-galar","Galar"],
+["Gengar","comun","gengar"],
+["Exeggutor","comun","exeggutor"],
+["Pinsir","comun","pinsir"],
+["Tauros","comun","tauros"],["Tauros","comun","tauros-paldea-combat-breed","Combate"],["Tauros","comun","tauros-paldea-blaze-breed","Llama"],["Tauros","comun","tauros-paldea-aqua-breed","Acuático"],
+["Gyarados","comun","gyarados"],
+["Eevee","comun","eevee"],
+["Vaporeon","comun","vaporeon"],
+["Jolteon","comun","jolteon"],
+["Flareon","comun","flareon"],
+["Porygon","comun","porygon"],
+["Snorlax","comun","snorlax"],
 
-  // Gen 2 (#0154 - #0230)
-  ["Meganium", "comun", "meganium"],                                  // #0154
-  ["Typhlosion", "comun", "typhlosion"],                              // #0157
-  ["Typhlosion", "comun", "typhlosion-hisui", "Hisui"],               // #0157
-  ["Feraligatr", "comun", "feraligatr"],                              // #0160
-  ["Crobat", "comun", "crobat"],                                      // #0169
-  ["Lanturn", "comun", "lanturn"],                                    // #0171
-  ["Azumarill", "comun", "azumarill"],                                // #0184
-  ["Politoed", "comun", "politoed"],                                  // #0186
-  ["Jumpluff", "comun", "jumpluff"],                                  // #0189
-  ["Espeon", "comun", "espeon"],                                      // #0196
-  ["Umbreon", "comun", "umbreon"],                                    // #0197
-  ["Murkrow", "comun", "murkrow"],                                    // #0198
-  ["Slowking", "comun", "slowking"],                                  // #0199
-  ["Slowking", "comun", "slowking-galar", "Galar"],                   // #0199
-  ["Forretress", "comun", "forretress"],                              // #0205
-  ["Steelix", "comun", "steelix"],                                    // #0208
-  ["Scizor", "comun", "scizor"],                                      // #0212
-  ["Corsola", "comun", "corsola"],                                    // #0222
-  ["Corsola", "comun", "corsola-galar", "Galar"],                     // #0222
-  ["Ursaring", "comun", "ursaring"],                                  // #0217
-  ["Kingdra", "comun", "kingdra"],                                    // #0230
-  ["Porygon2", "comun", "porygon2"],                                  // #0233
+/* --- Comunes: Gen 2 --- */
+["Meganium","comun","meganium"],
+["Typhlosion","comun","typhlosion"],["Typhlosion","comun","typhlosion-hisui","Hisui"],
+["Feraligatr","comun","feraligatr"],
+["Crobat","comun","crobat"],
+["Lanturn","comun","lanturn"],
+["Azumarill","comun","azumarill"],
+["Politoed","comun","politoed"],
+["Jumpluff","comun","jumpluff"],
+["Espeon","comun","espeon"],
+["Umbreon","comun","umbreon"],
+["Murkrow","comun","murkrow"],
+["Slowking","comun","slowking"],["Slowking","comun","slowking-galar","Galar"],
+["Forretress","comun","forretress"],
+["Steelix","comun","steelix"],
+["Scizor","comun","scizor"],
+["Ursaring","comun","ursaring"],
+["Corsola","comun","corsola"],["Corsola","comun","corsola-galar","Galar"],
+["Kingdra","comun","kingdra"],
+["Porygon2","comun","porygon2"],
 
-  // Gen 3 (#0254 - #0356)
-  ["Sceptile", "comun", "sceptile"],                                  // #0254
-  ["Blaziken", "comun", "blaziken"],                                  // #0257
-  ["Swampert", "comun", "swampert"],                                  // #0260
-  ["Ludicolo", "comun", "ludicolo"],                                  // #0272
-  ["Swellow", "comun", "swellow"],                                    // #0277
-  ["Pelipper", "comun", "pelipper"],                                  // #0279
-  ["Gardevoir", "comun", "gardevoir"],                                // #0282
-  ["Sableye", "comun", "sableye"],                                    // #0302
-  ["Medicham", "comun", "medicham"],                                  // #0308
-  ["Manectric", "comun", "manectric"],                                // #0310
-  ["Camerupt", "comun", "camerupt"],                                  // #0323
-  ["Aggron", "comun", "aggron"],                                      // #0306
-  ["Cradily", "comun", "cradily"],                                    // #0346
-  ["Milotic", "comun", "milotic"],                                    // #0350
-  ["Dusclops", "comun", "dusclops"],                                  // #0356
-  ["Absol", "comun", "absol"],                                        // #0359
+/* --- Comunes: Gen 3 --- */
+["Sceptile","comun","sceptile"],
+["Blaziken","comun","blaziken"],
+["Swampert","comun","swampert"],
+["Ludicolo","comun","ludicolo"],
+["Swellow","comun","swellow"],
+["Pelipper","comun","pelipper"],
+["Gardevoir","comun","gardevoir"],
+["Sableye","comun","sableye"],
+["Aggron","comun","aggron"],
+["Medicham","comun","medicham"],
+["Manectric","comun","manectric"],
+["Camerupt","comun","camerupt"],
+["Cradily","comun","cradily"],
+["Milotic","comun","milotic"],
+["Dusclops","comun","dusclops"],
+["Absol","comun","absol"],
 
-  // Gen 4 (#0398 - #0479)
-  ["Staraptor", "comun", "staraptor"],                                // #0398
-  ["Luxray", "comun", "luxray"],                                      // #0405
-  ["Gastrodon", "comun", "gastrodon-east"],                           // #0423
-  ["Honchkrow", "comun", "honchkrow"],                                // #0430
-  ["Bronzong", "comun", "bronzong"],                                  // #0437
-  ["Lucario", "comun", "lucario"],                                    // #0448
-  ["Hippowdon", "comun", "hippowdon"],                                // #0450
-  ["Toxicroak", "comun", "toxicroak"],                                // #0454
-  ["Magnezone", "comun", "magnezone"],                                // #0462
-  ["Tangrowth", "comun", "tangrowth"],                                // #0465
-  ["Togekiss", "comun", "togekiss"],                                  // #0468
-  ["Leafeon", "comun", "leafeon"],                                    // #0470
-  ["Glaceon", "comun", "glaceon"],                                    // #0471
-  ["Gliscor", "comun", "gliscor"],                                    // #0472
-  ["Mamoswine", "comun", "mamoswine"],                                // #0473
-  ["Porygon-Z", "comun", "porygon-z"],                                // #0474
-  ["Gallade", "comun", "gallade"],                                    // #0475
-  ["Dusknoir", "comun", "dusknoir"],                                  // #0477
-  ["Froslass", "comun", "froslass"],                                  // #0478
-  ["Rotom", "comun", "rotom"],                                        // #0479
-  ["Rotom", "comun", "rotom-heat", "Calor"],                          // #0479
-  ["Rotom", "comun", "rotom-wash", "Lavado"],                         // #0479
-  ["Rotom", "comun", "rotom-frost", "Hielo"],                         // #0479
-  ["Rotom", "comun", "rotom-fan", "Ventilador"],                      // #0479
-  ["Rotom", "comun", "rotom-mow", "Corte"],                           // #0479
+/* --- Comunes: Gen 4 --- */
+["Staraptor","comun","staraptor"],
+["Luxray","comun","luxray"],
+["Gastrodon","comun","gastrodon"],
+["Honchkrow","comun","honchkrow"],
+["Bronzong","comun","bronzong"],
+["Lucario","comun","lucario"],
+["Hippowdon","comun","hippowdon"],
+["Toxicroak","comun","toxicroak"],
+["Magnezone","comun","magnezone"],
+["Tangrowth","comun","tangrowth"],
+["Togekiss","comun","togekiss"],
+["Leafeon","comun","leafeon"],
+["Glaceon","comun","glaceon"],
+["Gliscor","comun","gliscor"],
+["Mamoswine","comun","mamoswine"],
+["Porygon-Z","comun","porygon-z"],
+["Gallade","comun","gallade"],
+["Dusknoir","comun","dusknoir"],
+["Froslass","comun","froslass"],
+["Rotom","comun","rotom"],["Rotom","comun","rotom-heat","Calor"],["Rotom","comun","rotom-wash","Lavado"],["Rotom","comun","rotom-frost","Hielo"],["Rotom","comun","rotom-fan","Ventilador"],["Rotom","comun","rotom-mow","Corte"],
 
-  // Gen 5 (#0497 - #0637)
-  ["Serperior", "comun", "serperior"],                                // #0497
-  ["Emboar", "comun", "emboar"],                                      // #0500
-  ["Samurott", "comun", "samurott"],                                  // #0503
-  ["Samurott", "comun", "samurott-hisui", "Hisui"],                   // #0503
-  ["Excadrill", "comun", "excadrill"],                                // #0530
-  ["Conkeldurr", "comun", "conkeldurr"],                              // #0534
-  ["Seismitoad", "comun", "seismitoad"],                              // #0537
-  ["Scrafty", "comun", "scrafty"],                                    // #0560
-  ["Sigilyph", "comun", "sigilyph"],                                  // #0561
-  ["Cofagrigus", "comun", "cofagrigus"],                              // #0563
-  ["Zoroark", "comun", "zoroark"],                                    // #0571
-  ["Zoroark", "comun", "zoroark-hisui", "Hisui"],                     // #0571
-  ["Reuniclus", "comun", "reuniclus"],                                // #0579
-  ["Sawsbuck", "comun", "sawsbuck-spring"],                           // #0586
-  ["Amoonguss", "comun", "amoonguss"],                                // #0591
-  ["Jellicent", "comun", "jellicent-male"],                           // #0593
-  ["Eelektross", "comun", "eelektross"],                              // #0604
-  ["Chandelure", "comun", "chandelure"],                              // #0609
-  ["Volcarona", "comun", "volcarona"],                                // #0637
+/* --- Comunes: Gen 5 --- */
+["Serperior","comun","serperior"],
+["Emboar","comun","emboar"],
+["Samurott","comun","samurott"],["Samurott","comun","samurott-hisui","Hisui"],
+["Excadrill","comun","excadrill"],
+["Conkeldurr","comun","conkeldurr"],
+["Seismitoad","comun","seismitoad"],
+["Krookodile","comun","krookodile"],
+["Scrafty","comun","scrafty"],
+["Sigilyph","comun","sigilyph"],
+["Cofagrigus","comun","cofagrigus"],
+["Zoroark","comun","zoroark"],["Zoroark","comun","zoroark-hisui","Hisui"],
+["Reuniclus","comun","reuniclus"],
+["Sawsbuck","comun","sawsbuck"],
+["Amoonguss","comun","amoonguss"],
+["Jellicent","comun","jellicent-male"],
+["Eelektross","comun","eelektross"],
+["Chandelure","comun","chandelure"],
+["Volcarona","comun","volcarona"],
 
-  // Gen 6 (#0655 - #0715)
-  ["Delphox", "comun", "delphox"],                                    // #0655
-  ["Talonflame", "comun", "talonflame"],                              // #0663
-  ["Aegislash", "comun", "aegislash-shield"],                         // #0681
-  ["Clawitzer", "comun", "clawitzer"],                                // #0693
-  ["Heliolisk", "comun", "heliolisk"],                                // #0695
-  ["Tyrantrum", "comun", "tyrantrum"],                                // #0697
-  ["Sylveon", "comun", "sylveon"],                                    // #0700
-  ["Hawlucha", "comun", "hawlucha"],                                  // #0701
-  ["Dragalge", "comun", "dragalge"],                                  // #0691
-  ["Noivern", "comun", "noivern"],                                    // #0715
+/* --- Comunes: Gen 6 --- */
+["Delphox","comun","delphox"],
+["Talonflame","comun","talonflame"],
+["Aegislash","comun","aegislash-shield"],
+["Dragalge","comun","dragalge"],
+["Clawitzer","comun","clawitzer"],
+["Heliolisk","comun","heliolisk"],
+["Tyrantrum","comun","tyrantrum"],
+["Sylveon","comun","sylveon"],
+["Hawlucha","comun","hawlucha"],
+["Noivern","comun","noivern"],
 
-  // Gen 7 (#0738 - #0781)
-  ["Vikavolt", "comun", "vikavolt"],                                  // #0738
-  ["Crabominable", "comun", "crabominable"],                          // #0740
-  ["Ribombee", "comun", "ribombee"],                                  // #0743
-  ["Lycanroc", "comun", "lycanroc-midday"],                           // #0745
-  ["Araquanid", "comun", "araquanid"],                                // #0752
-  ["Lurantis", "comun", "lurantis"],                                  // #0754
-  ["Salazzle", "comun", "salazzle"],                                  // #0758
-  ["Bewear", "comun", "bewear"],                                      // #0760
-  ["Tsareena", "comun", "tsareena"],                                  // #0763
-  ["Pyukumuku", "comun", "pyukumuku"],                                // #0771
-  ["Togedemaru", "comun", "togedemaru"],                              // #0777
-  ["Drampa", "comun", "drampa"],                                      // #0780
-  ["Dhelmise", "comun", "dhelmise"],                                  // #0781
+/* --- Comunes: Gen 7 --- */
+["Vikavolt","comun","vikavolt"],
+["Crabominable","comun","crabominable"],
+["Ribombee","comun","ribombee"],
+["Lycanroc","comun","lycanroc-midday"],
+["Araquanid","comun","araquanid"],
+["Lurantis","comun","lurantis"],
+["Salazzle","comun","salazzle"],
+["Bewear","comun","bewear"],
+["Tsareena","comun","tsareena"],
+["Pyukumuku","comun","pyukumuku"],
+["Togedemaru","comun","togedemaru"],
+["Drampa","comun","drampa"],
+["Dhelmise","comun","dhelmise"],
 
-  // Gen 8 y nuevas evoluciones (#0812 - #0901)
-  ["Rillaboom", "comun", "rillaboom"],                                // #0812
-  ["Cinderace", "comun", "cinderace"],                                // #0815
-  ["Inteleon", "comun", "inteleon"],                                  // #0818
-  ["Corviknight", "comun", "corviknight"],                            // #0823
-  ["Barraskewda", "comun", "barraskewda"],                            // #0847
-  ["Polteageist", "comun", "polteageist"],                            // #0855
-  ["Hatterene", "comun", "hatterene"],                                // #0858
-  ["Grimmsnarl", "comun", "grimmsnarl"],                              // #0861
-  ["Sirfetch'd", "comun", "sirfetchd"],                               // #0865
-  ["Cursola", "comun", "cursola"],                                    // #0864
-  ["Runerigus", "comun", "runerigus"],                                // #0867
-  ["Falinks", "comun", "falinks"],                                    // #0870
-  ["Copperajah", "comun", "copperajah"],                              // #0879
-  ["Dracozolt", "comun", "dracozolt"],                                // #0880
-  ["Arctozolt", "comun", "arctozolt"],                                // #0881
-  ["Dracovish", "comun", "dracovish"],                                // #0882
-  ["Duraludon", "comun", "duraludon"],                                // #0884
-  ["Indeedee", "comun", "indeedee-male"],                             // #0876
-  ["Morpeko", "comun", "morpeko-full-belly"],                         // #0877
-  ["Eiscue", "comun", "eiscue-ice"],                                  // #0875
-  ["Kleavor", "comun", "kleavor"],                                    // #0900
-  ["Ursaluna", "comun", "ursaluna"],                                  // #0901
+/* --- Comunes: Gen 8 --- */
+["Rillaboom","comun","rillaboom"],
+["Cinderace","comun","cinderace"],
+["Inteleon","comun","inteleon"],
+["Corviknight","comun","corviknight"],
+["Barraskewda","comun","barraskewda"],
+["Polteageist","comun","polteageist"],
+["Hatterene","comun","hatterene"],
+["Grimmsnarl","comun","grimmsnarl"],
+["Cursola","comun","cursola"],
+["Sirfetch'd","comun","sirfetchd"],
+["Runerigus","comun","runerigus"],
+["Falinks","comun","falinks"],
+["Eiscue","comun","eiscue-ice"],
+["Indeedee","comun","indeedee-male"],
+["Morpeko","comun","morpeko-full-belly"],
+["Copperajah","comun","copperajah"],
+["Dracozolt","comun","dracozolt"],
+["Arctozolt","comun","arctozolt"],
+["Dracovish","comun","dracovish"],
+["Duraludon","comun","duraludon"],
+["Kleavor","comun","kleavor"],
+["Ursaluna","comun","ursaluna"],
 
-  // Gen 9 (#0923 - #1018)
-  ["Pawmot", "comun", "pawmot"],                                      // #0923
-  ["Maushold", "comun", "maushold"],                                  // #0925
-  ["Arboliva", "comun", "arboliva"],                                  // #0930
-  ["Garganacl", "comun", "garganacl"],                                // #0934
-  ["Kilowattrel", "comun", "kilowattrel"],                            // #0941
-  ["Scovillain", "comun", "scovillain"],                              // #0952
-  ["Toedscruel", "comun", "toedscruel"],                              // #0949
-  ["Orthworm", "comun", "orthworm"],                                  // #0968
-  ["Glimmora", "comun", "glimmora"],                                  // #0970
-  ["Houndstone", "comun", "houndstone"],                              // #0972
-  ["Farigiraf", "comun", "farigiraf"],                                // #0981
-  ["Tinkaton", "comun", "tinkaton"],                                  // #0959
-  ["Veluza", "comun", "veluza"],                                      // #0976
-  ["Palafin", "comun", "palafin-zero"],                               // #0964
-  ["Gholdengo", "comun", "gholdengo"],                                // #1000
-  ["Archaludon", "comun", "archaludon"]                               // #1018
-];
+/* --- Comunes: Gen 9 --- */
+["Pawmot","comun","pawmot"],
+["Maushold","comun","maushold-family-of-four"],
+["Arboliva","comun","arboliva"],
+["Garganacl","comun","garganacl"],
+["Kilowattrel","comun","kilowattrel"],
+["Toedscruel","comun","toedscruel"],
+["Scovillain","comun","scovillain"],
+["Tinkaton","comun","tinkaton"],
+["Palafin","comun","palafin-zero"],
+["Orthworm","comun","orthworm"],
+["Glimmora","comun","glimmora"],
+["Houndstone","comun","houndstone"],
+["Veluza","comun","veluza"],
+["Farigiraf","comun","farigiraf"],
+["Gholdengo","comun","gholdengo"],
+["Archaludon","comun","archaludon"]
 
 const CATS = {
-  reclutamiento: { label: "Reclutamiento Umbral", plural: "reclutamiento" },
-  prohibicion:   { label: "Prohibición Umbral", plural: "prohibicion" },
-  prision:       { label: "Prisión Umbral", plural: "prision" },
-  comun:         { label: "Comunes", plural: "comunes" },
-  pseudo:        { label: "Pseudo-legendarios", plural: "pseudo" },
-  legendario:    { label: "Legendarios", plural: "legendarios" },
-  ultraente:     { label: "Ultra Entes", plural: "ultraente" },
+  prision:{label:"Prisión Umbral", plural:"prision"},
+  reclutamiento:{label:"Reclutamiento Umbral", plural:"reclutamiento"},
+  prohibicion:{label:"Prohibición Umbral", plural:"prohibicion"},
+  comun:{label:"Comunes", plural:"comunes"},
+  pseudo:{label:"Pseudo-legendarios", plural:"pseudo"},
+  legendario:{label:"Legendarios", plural:"legendarios"},
+  ultraente:{label:"Ultra Entes", plural:"ultraente"},
 };
-
-const CAT_ORDER = ["reclutamiento", "prohibicion", "prision", "comun", "pseudo", "legendario", "ultraente"];
-
-const SUBTITLES = {
-  reclutamiento: "Elegido por la comunidad",
-  prohibicion: "Elegido por la comunidad",
-  prision: "Pokemon baneados por esta temporada, no pueden ser reclutados hasta la proxima temporada"
-};
+/* CAT_ORDER controla tanto las pestañas como el orden de las secciones */
+const CAT_ORDER = ["prision","reclutamiento","prohibicion","comun","pseudo","legendario","ultraente"];
+const STATS_KEYS = CAT_ORDER;
+const COMMUNITY_CATS = new Set(["reclutamiento","prohibicion"]);
 
 const TYPE_ES = {
   normal:"Normal", fire:"Fuego", water:"Agua", electric:"Eléctrico", grass:"Planta",
@@ -674,7 +656,6 @@ const tabsEl = document.getElementById("tabs");
 const allTabBtn = mkTab("todos","Todos");
 tabsEl.appendChild(allTabBtn);
 CAT_ORDER.forEach(c => tabsEl.appendChild(mkTab(c, CATS[c].label)));
-
 function mkTab(key,label){
   const b = document.createElement("button");
   b.textContent = label;
@@ -701,7 +682,6 @@ TYPE_ORDER.forEach(t=>{
   });
   typeRow.appendChild(chip);
 });
-
 const clearBtn = document.createElement("button");
 clearBtn.className = "clear-types";
 clearBtn.textContent = "Limpiar tipos";
@@ -718,12 +698,9 @@ document.getElementById("search").addEventListener("input", e=>{
 });
 
 /* ---------------- STATS ---------------- */
-CAT_ORDER.forEach(c=>{
-  const statEl = document.getElementById(`stat-${c}`);
-  if(statEl) {
-    const count = new Set(ROSTER.filter(r=>r[1]===c).map(r=>r[0])).size;
-    statEl.textContent = count;
-  }
+STATS_KEYS.forEach(c=>{
+  const count = new Set(ROSTER.filter(r=>r[1]===c).map(r=>r[0])).size;
+  document.getElementById(`stat-${c}`).textContent = count;
 });
 
 /* ---------------- FETCH ---------------- */
@@ -933,51 +910,45 @@ function render(){
     label.textContent = CATS[cat].label;
     main.appendChild(label);
 
-    if(SUBTITLES[cat]){
+    if(COMMUNITY_CATS.has(cat)){
       const sub = document.createElement("div");
       sub.className = "section-sub";
-      sub.textContent = SUBTITLES[cat];
+      sub.textContent = "Elegido por la comunidad";
       main.appendChild(sub);
     }
 
-    const grid = document.createElement("div");
-    grid.className = "grid";
-    items.forEach(entry=>{
-      const [name, cat2, slug, form] = entry;
-      const card = document.createElement("div");
-      let catClass = "";
-      if(cat2 === "prohibicion") catClass = " banned";
-      else if(cat2 === "prision") catClass = " prison";
-
-      card.className = "card" + catClass;
-      card.dataset.slug = slug;
-      card.dataset.name = name;
-      
-      let tagHtml = "";
-      if(cat2 === "prohibicion") tagHtml = `<span class="ban-tag">Prohibido</span>`;
-      else if(cat2 === "prision") tagHtml = `<span class="prison-tag">Prisión</span>`;
-      else if(form) tagHtml = `<span class="form-tag">${form}</span>`;
-
-      card.innerHTML = `
-        ${tagHtml}
-        <div class="img-wrap"><div class="skel"></div></div>
-        <div class="name">${name}${form?` <span style="color:var(--text-faint);font-weight:500;">(${form})</span>`:""}</div>
-        <div class="types"></div>
-      `;
-      card.addEventListener("mouseenter", e=>openPanel(card, slug, name, form));
-      card.addEventListener("mouseleave", closePanelSoon);
-      card.addEventListener("click", e=>{
-        if(panel.classList.contains("show") && panel.dataset.slug===slug){
-          closePanel();
-        } else {
-          openPanel(card, slug, name, form, true);
-        }
-      });
-      grid.appendChild(card);
-      if(cache[slug]) paintCard(card, slug);
-    });
-    main.appendChild(grid);
+    main.appendChild(buildGrid(items));
   });
+}
+
+function buildGrid(items){
+  const grid = document.createElement("div");
+  grid.className = "grid";
+  items.forEach(entry=>{
+    const [name, cat2, slug, form] = entry;
+    const card = document.createElement("div");
+    card.className = "card" + (cat2 === "prohibicion" ? " banned" : cat2 === "prision" ? " jailed" : "");
+    card.dataset.slug = slug;
+    card.dataset.name = name;
+    card.innerHTML = `
+      ${cat2 === "prohibicion" ? `<span class="ban-tag">Prohibido</span>` : cat2 === "prision" ? `<span class="jail-tag">Prisión</span>` : (form ? `<span class="form-tag">${form}</span>`:"")}
+      <div class="img-wrap"><div class="skel"></div></div>
+      <div class="name">${name}${form?` <span style="color:var(--text-faint);font-weight:500;">(${form})</span>`:""}</div>
+      <div class="types"></div>
+    `;
+    card.addEventListener("mouseenter", e=>openPanel(card, slug, name, form));
+    card.addEventListener("mouseleave", closePanelSoon);
+    card.addEventListener("click", e=>{
+      if(panel.classList.contains("show") && panel.dataset.slug===slug){
+        closePanel();
+      } else {
+        openPanel(card, slug, name, form, true);
+      }
+    });
+    grid.appendChild(card);
+    if(cache[slug]) paintCard(card, slug);
+  });
+  return grid;
 }
 
 /* ---------------- INFO PANEL ---------------- */

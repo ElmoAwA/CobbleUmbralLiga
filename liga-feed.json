@@ -1,27 +1,31 @@
 {
-  "temporada": "Liga Umbral · Regulación Septiembre 2026",
-  "semana_actual": 2,
-  "ultima_actualizacion": "Actualización semanal acumulativa de Reclutamiento y Prohibición.",
-  "reclutamiento_total": [
-    { "name": "Raichu", "slug": "raichu", "semana": 1 },
-    { "name": "Basculegion", "slug": "basculegion-male", "semana": 1 },
-    { "name": "Flapple", "slug": "flapple", "semana": 2 },
-    { "name": "Appletun", "slug": "appletun", "semana": 2 },
-    { "name": "Dipplin", "slug": "dipplin", "semana": 2 },
-    { "name": "Hydrapple", "slug": "hydrapple", "semana": 2 },
-    { "name": "Annihilape", "slug": "annihilape", "semana": 3 },
-    { "name": "Sneasler", "slug": "sneasler", "semana": 3 },
-    { "name": "Haxorus", "slug": "haxorus", "semana": 4 }
+  "temporada": "Liga Umbral · Regulación Octubre 2026",
+  "semana_actual": 1,
+  "ultima_actualizacion": "Actualización mensual de Regulación Octubre: Apertura de Prisión Umbral y reinicio de Reclutamiento.",
+  "prision_total": [
+    { "name": "Raichu", "slug": "raichu", "pokedex": 26 },
+    { "name": "Darmanitan (Galar)", "slug": "darmanitan-galar-standard", "pokedex": 555 },
+    { "name": "Ferrothorn", "slug": "ferrothorn", "pokedex": 598 },
+    { "name": "Haxorus", "slug": "haxorus", "pokedex": 612 },
+    { "name": "Greninja", "slug": "greninja", "pokedex": 658 },
+    { "name": "Greninja (Ash)", "slug": "greninja-ash", "pokedex": 658 },
+    { "name": "Greninja (Fuerte Afecto)", "slug": "greninja-battle-bond", "pokedex": 658 },
+    { "name": "Toxapex", "slug": "toxapex", "pokedex": 748 },
+    { "name": "Flapple", "slug": "flapple", "pokedex": 841 },
+    { "name": "Appletun", "slug": "appletun", "pokedex": 842 },
+    { "name": "Basculegion", "slug": "basculegion-male", "pokedex": 902 },
+    { "name": "Sneasler", "slug": "sneasler", "pokedex": 903 },
+    { "name": "Meowscarada", "slug": "meowscarada", "pokedex": 908 },
+    { "name": "Skeledirge", "slug": "skeledirge", "pokedex": 911 },
+    { "name": "Annihilape", "slug": "annihilape", "pokedex": 979 },
+    { "name": "Dipplin", "slug": "dipplin", "pokedex": 1011 },
+    { "name": "Hydrapple", "slug": "hydrapple", "pokedex": 1019 }
   ],
   "prohibicion_total": [
-    { "name": "Darmanitan (Galar)", "slug": "darmanitan-galar-standard", "semana": 1 },
-    { "name": "Greninja", "slug": "greninja", "semana": 1 },
-    { "name": "Greninja (Ash)", "slug": "greninja-ash", "semana": 1 },
-    { "name": "Greninja (Fuerte Afecto)", "slug": "greninja-battle-bond", "semana": 1 },
-    { "name": "Toxapex", "slug": "toxapex", "semana": 2 },
-    { "name": "Meowscarada", "slug": "meowscarada", "semana": 3 },
-    { "name": "Ferroseed", "slug": "ferroseed", "semana": 3 },
-    { "name": "Ferrothorn", "slug": "ferrothorn", "semana": 3 },
-    { "name": "Skeledirge", "slug": "skeledirge", "semana": 4 }
+    { "name": "Unown", "slug": "unown", "placeholder": true }
+  ],
+  "reclutamiento_total": [
+    { "name": "Wimpod", "slug": "wimpod", "semana": 1 },
+    { "name": "Golisopod", "slug": "golisopod", "semana": 1 }
   ]
 }

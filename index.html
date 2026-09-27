@@ -131,7 +131,7 @@ main { padding: 1.6rem 6vw 2rem; }
   margin: 2rem 0 0.3rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--line);
 }
 .section-sub {
-  font-size: 0.8rem; color: var(--text-faint); margin: -0.55rem 0 0.9rem; font-style: italic;
+  font-size: 0.8rem; color: var(--text-faint); margin: -0.2rem 0 0.9rem; font-style: italic;
 }
 .grid {
   display: grid; grid-template-columns: repeat(auto-fill,minmax(126px,1fr)); gap: 0.7rem;
@@ -145,9 +145,17 @@ main { padding: 1.6rem 6vw 2rem; }
 .card.banned { border-color: #4a2230; background: #241823; }
 .card.banned:hover, .card.banned.pinned { border-color: #ff5b7a; }
 .card.banned .img-wrap img { filter: grayscale(75%) drop-shadow(0 4px 10px rgba(0,0,0,0.4)); opacity: 0.75; }
+.card.prison { border-color: #4b306b; background: #20172d; }
+.card.prison:hover, .card.prison.pinned { border-color: #a370f7; }
+.card.prison .img-wrap img { filter: grayscale(40%) drop-shadow(0 4px 10px rgba(0,0,0,0.4)); opacity: 0.8; }
 .card .ban-tag {
   position: absolute; top: 6px; left: 6px; font-size: 0.6rem; font-family: 'Rajdhani', sans-serif; font-weight: 700;
   color: #ff5b7a; letter-spacing: 0.02em; background: rgba(255,91,122,0.12); border: 1px solid #ff5b7a;
+  border-radius: 4px; padding: 1px 5px;
+}
+.card .prison-tag {
+  position: absolute; top: 6px; left: 6px; font-size: 0.6rem; font-family: 'Rajdhani', sans-serif; font-weight: 700;
+  color: #a370f7; letter-spacing: 0.02em; background: rgba(163,112,247,0.15); border: 1px solid #a370f7;
   border-radius: 4px; padding: 1px 5px;
 }
 .card .badge-cat {
@@ -345,14 +353,15 @@ footer a { color: var(--text-dim); }
   <div class="hero-top">
     <div>
       <div class="hero-eyebrow">Proyecto Regulación Umbral</div>
-      <h1>Liga Umbral Septiembre</h1>
+      <h1>Liga Umbral Octubre</h1>
       <p class="hero-sub">Pool de Pokémon habilitados para la regulación vigente del servidor. Filtra por tipo o por categoría y pasa el cursor sobre cualquier Pokémon para ver su información.</p>
     </div>
-    <div class="month-badge" id="month-badge">Regulación · Septiembre 2026</div>
+    <div class="month-badge" id="month-badge">Regulación · Octubre 2026</div>
   </div>
   <div class="hero-stats">
     <div class="stat"><b id="stat-reclutamiento">—</b><span>Reclutamiento Umbral</span></div>
     <div class="stat"><b id="stat-prohibicion">—</b><span>Prohibición Umbral</span></div>
+    <div class="stat"><b id="stat-prision">—</b><span>Prisión Umbral</span></div>
     <div class="stat"><b id="stat-comun">—</b><span>Comunes en rotación</span></div>
     <div class="stat"><b id="stat-pseudo">—</b><span>Pseudo-legendarios</span></div>
     <div class="stat"><b id="stat-legendario">—</b><span>Legendarios</span></div>
@@ -374,7 +383,7 @@ footer a { color: var(--text-dim); }
 <main id="main"></main>
 
 <footer>
-  Datos, imágenes, stats y habilidades obtenidos en vivo de <a href="https://pokeapi.co" target="_blank" rel="noopener">PokéAPI</a>. Roster basado en el documento de Regulación Umbral (septiembre 2026). Página estática — puedes alojarla gratis en GitHub Pages, Netlify o Vercel.
+  Datos, imágenes, stats y habilidades obtenidos en vivo de <a href="https://pokeapi.co" target="_blank" rel="noopener">PokéAPI</a>. Roster basado en el documento de Regulación Umbral (octubre 2026). Página estática — puedes alojarla gratis en GitHub Pages, Netlify o Vercel.
 </footer>
 
 <div class="info-panel" id="info-panel">
@@ -402,101 +411,250 @@ footer a { color: var(--text-dim); }
 <script>
 /* ---------------- DATA ---------------- */
 const ROSTER = [
-["Raichu","reclutamiento","raichu"],
-["Basculegion","reclutamiento","basculegion-male"],
-["Flapple","reclutamiento","flapple"],
-["Appletun","reclutamiento","appletun"],
-["Dipplin","reclutamiento","dipplin"],
-["Hydrapple","reclutamiento","hydrapple"],
-["Annihilape","reclutamiento","annihilape"],
-["Sneasler","reclutamiento","sneasler"],
-["Haxorus","reclutamiento","haxorus"],
+  // --- RECLUTAMIENTO UMBRAL (Golisopod y su línea evolutiva) ---
+  ["Wimpod", "reclutamiento", "wimpod"],
+  ["Golisopod", "reclutamiento", "golisopod"],
 
-["Darmanitan","prohibicion","darmanitan-galar-standard","Galar"],
-["Greninja","prohibicion","greninja"],
-["Greninja","prohibicion","greninja-ash","Ash"],
-["Greninja","prohibicion","greninja-battle-bond","Fuerte Afecto"],
-["Toxapex","prohibicion","toxapex"],
-["Meowscarada","prohibicion","meowscarada"],
-["Ferroseed","prohibicion","ferroseed"],
-["Ferrothorn","prohibicion","ferrothorn"],
-["Skeledirge","prohibicion","skeledirge"],
+  // --- PROHIBICIÓN UMBRAL (Vacío) ---
 
-["Venusaur","comun","venusaur"],["Charizard","comun","charizard"],["Blastoise","comun","blastoise"],
-["Nidoking","comun","nidoking"],["Clefable","comun","clefable"],
-["Ninetales","comun","ninetales"],["Ninetales","comun","ninetales-alola","Alola"],
-["Arcanine","comun","arcanine"],["Arcanine","comun","arcanine-hisui","Hisui"],
-["Alakazam","comun","alakazam"],["Slowbro","comun","slowbro"],["Slowbro","comun","slowbro-galar","Galar"],
-["Muk","comun","muk"],["Muk","comun","muk-alola","Alola"],["Cloyster","comun","cloyster"],
-["Gengar","comun","gengar"],["Chansey","comun","chansey"],["Kangaskhan","comun","kangaskhan"],
-["Starmie","comun","starmie"],["Tauros","comun","tauros"],
-["Tauros","comun","tauros-paldea-combat-breed","Combate"],["Tauros","comun","tauros-paldea-blaze-breed","Llama"],
-["Tauros","comun","tauros-paldea-aqua-breed","Acuático"],["Gyarados","comun","gyarados"],
-["Eevee","comun","eevee"],["Vaporeon","comun","vaporeon"],["Jolteon","comun","jolteon"],
-["Flareon","comun","flareon"],["Porygon","comun","porygon"],["Crobat","comun","crobat"],
-["Azumarill","comun","azumarill"],["Quagsire","comun","quagsire"],["Espeon","comun","espeon"],
-["Umbreon","comun","umbreon"],["Slowking","comun","slowking"],["Slowking","comun","slowking-galar","Galar"],
-["Forretress","comun","forretress"],["Steelix","comun","steelix"],["Scizor","comun","scizor"],
-["Heracross","comun","heracross"],["Skarmory","comun","skarmory"],["Houndoom","comun","houndoom"],
-["Smeargle","comun","smeargle"],["Miltank","comun","miltank"],["Blissey","comun","blissey"],
-["Blaziken","comun","blaziken"],["Swampert","comun","swampert"],["Ludicolo","comun","ludicolo"],
-["Pelipper","comun","pelipper"],["Gardevoir","comun","gardevoir"],["Breloom","comun","breloom"],
-["Sableye","comun","sableye"],["Manectric","comun","manectric"],["Camerupt","comun","camerupt"],
-["Claydol","comun","claydol"],["Cradily","comun","cradily"],["Milotic","comun","milotic"],
-["Dusclops","comun","dusclops"],["Walrein","comun","walrein"],["Torterra","comun","torterra"],
-["Infernape","comun","infernape"],["Empoleon","comun","empoleon"],["Roserade","comun","roserade"],
-["Bronzong","comun","bronzong"],["Hippowdon","comun","hippowdon"],["Drapion","comun","drapion"],
-["Weavile","comun","weavile"],["Tangrowth","comun","tangrowth"],["Togekiss","comun","togekiss"],
-["Yanmega","comun","yanmega"],["Leafeon","comun","leafeon"],["Glaceon","comun","glaceon"],
-["Gliscor","comun","gliscor"],["Mamoswine","comun","mamoswine"],["Gallade","comun","gallade"],
-["Dusknoir","comun","dusknoir"],["Froslass","comun","froslass"],
-["Rotom","comun","rotom"],["Rotom","comun","rotom-heat","Calor"],["Rotom","comun","rotom-wash","Lavado"],
-["Rotom","comun","rotom-frost","Hielo"],["Rotom","comun","rotom-fan","Ventilador"],["Rotom","comun","rotom-mow","Corte"],
-["Serperior","comun","serperior"],["Stoutland","comun","stoutland"],["Excadrill","comun","excadrill"],
-["Conkeldurr","comun","conkeldurr"],["Seismitoad","comun","seismitoad"],["Whimsicott","comun","whimsicott"],
-["Krookodile","comun","krookodile"],["Darmanitan","comun","darmanitan-standard"],["Reuniclus","comun","reuniclus"],
-["Amoonguss","comun","amoonguss"],["Jellicent","comun","jellicent-male"],["Galvantula","comun","galvantula"],
-["Eelektross","comun","eelektross"],["Chandelure","comun","chandelure"],
-["Mienshao","comun","mienshao"],["Volcarona","comun","volcarona"],["Diggersby","comun","diggersby"],
-["Talonflame","comun","talonflame"],["Malamar","comun","malamar"],["Barbaracle","comun","barbaracle"],
-["Clawitzer","comun","clawitzer"],["Heliolisk","comun","heliolisk"],["Sylveon","comun","sylveon"],
-["Trevenant","comun","trevenant"],["Gourgeist","comun","gourgeist-average"],["Noivern","comun","noivern"],
-["Incineroar","comun","incineroar"],["Primarina","comun","primarina"],["Crabominable","comun","crabominable"],
-["Ribombee","comun","ribombee"],["Mudsdale","comun","mudsdale"],
-["Araquanid","comun","araquanid"],["Salazzle","comun","salazzle"],["Bewear","comun","bewear"],
-["Tsareena","comun","tsareena"],["Golisopod","comun","golisopod"],["Palossand","comun","palossand"],
-["Minior","comun","minior-red-meteor"],["Mimikyu","comun","mimikyu-disguised"],["Dhelmise","comun","dhelmise"],
-["Rillaboom","comun","rillaboom"],["Cinderace","comun","cinderace"],["Corviknight","comun","corviknight"],
-["Sandaconda","comun","sandaconda"],["Barraskewda","comun","barraskewda"],["Centiskorch","comun","centiskorch"],
-["Polteageist","comun","polteageist"],["Hatterene","comun","hatterene"],["Grimmsnarl","comun","grimmsnarl"],
-["Obstagoon","comun","obstagoon"],["Dracozolt","comun","dracozolt"],["Arctozolt","comun","arctozolt"],
-["Dracovish","comun","dracovish"],
-["Lokix","comun","lokix"],["Pawmot","comun","pawmot"],["Arboliva","comun","arboliva"],
-["Garganacl","comun","garganacl"],["Armarouge","comun","armarouge"],["Ceruledge","comun","ceruledge"],
-["Espathra","comun","espathra"],["Tinkaton","comun","tinkaton"],["Glimmora","comun","glimmora"],
-["Dondozo","comun","dondozo"],["Clodsire","comun","clodsire"],["Kingambit","comun","kingambit"],
-["Gholdengo","comun","gholdengo"],
+  // --- PRISIÓN UMBRAL ---
+  ["Darmanitan", "prision", "darmanitan-galar-standard", "Galar"],
+  ["Ferrothorn", "prision", "ferrothorn"],
+  ["Greninja", "prision", "greninja"],
+  ["Greninja", "prision", "greninja-ash", "Ash"],
+  ["Greninja", "prision", "greninja-battle-bond", "Fuerte Afecto"],
+  ["Toxapex", "prision", "toxapex"],
+  ["Meowscarada", "prision", "meowscarada"],
+  ["Skeledirge", "prision", "skeledirge"],
+  ["Raichu", "prision", "raichu"],
+  ["Haxorus", "prision", "haxorus"],
+  ["Basculegion", "prision", "basculegion-male"],
+  ["Flapple", "prision", "flapple"],
+  ["Appletun", "prision", "appletun"],
+  ["Sneasler", "prision", "sneasler"],
+  ["Dipplin", "prision", "dipplin"],
+  ["Hydrapple", "prision", "hydrapple"],
+  ["Annihilape", "prision", "annihilape"],
 
-["Garchomp","pseudo","garchomp"],["Metagross","pseudo","metagross"],["Dragapult","pseudo","dragapult"],
+  // --- LEGENDARIOS ---
+  ["Thundurus", "legendario", "thundurus-incarnate"],
+  ["Tornadus", "legendario", "tornadus-incarnate"],
+  ["Landorus", "legendario", "landorus-incarnate"],
+  ["Kyogre", "legendario", "kyogre"],
+  ["Groudon", "legendario", "groudon"],
 
-["Zapdos","legendario","zapdos"],["Zapdos","legendario","zapdos-galar","Galar"],
-["Moltres","legendario","moltres"],["Moltres","legendario","moltres-galar","Galar"],
-["Articuno","legendario","articuno"],["Articuno","legendario","articuno-galar","Galar"],
-["Zacian","legendario","zacian"],["Zamazenta","legendario","zamazenta"],
+  // --- PSEUDOLEGENDARIOS ---
+  ["Dragonite", "pseudo", "dragonite"],
+  ["Tyranitar", "pseudo", "tyranitar"],
+  ["Baxcalibur", "pseudo", "baxcalibur"],
 
-["Celesteela","ultraente","celesteela"],["Buzzwole","ultraente","buzzwole"],
+  // --- ULTRAENTES ---
+  ["Pheromosa", "ultraente", "pheromosa"],
+  ["Naganadel", "ultraente", "naganadel"],
+
+  // --- COMUNES: GEN 01 ---
+  ["Nidoking", "comun", "nidoking"],
+  ["Ninetales", "comun", "ninetales"],
+  ["Ninetales", "comun", "ninetales-alola", "Alola"],
+  ["Arcanine", "comun", "arcanine"],
+  ["Arcanine", "comun", "arcanine-hisui", "Hisui"],
+  ["Slowbro", "comun", "slowbro"],
+  ["Slowbro", "comun", "slowbro-galar", "Galar"],
+  ["Gengar", "comun", "gengar"],
+  ["Tauros", "comun", "tauros"],
+  ["Tauros", "comun", "tauros-paldea-combat-breed", "Combate"],
+  ["Tauros", "comun", "tauros-paldea-blaze-breed", "Llama"],
+  ["Tauros", "comun", "tauros-paldea-aqua-breed", "Acuático"],
+  ["Gyarados", "comun", "gyarados"],
+  ["Eevee", "comun", "eevee"],
+  ["Vaporeon", "comun", "vaporeon"],
+  ["Tentacruel", "comun", "tentacruel"],
+  ["Poliwrath", "comun", "poliwrath"],
+  ["Snorlax", "comun", "snorlax"],
+  ["Jolteon", "comun", "jolteon"],
+  ["Exeggutor", "comun", "exeggutor"],
+  ["Pinsir", "comun", "pinsir"],
+  ["Flareon", "comun", "flareon"],
+  ["Porygon", "comun", "porygon"],
+
+  // --- COMUNES: GEN 02 ---
+  ["Crobat", "comun", "crobat"],
+  ["Feraligatr", "comun", "feraligatr"],
+  ["Meganium", "comun", "meganium"],
+  ["Typhlosion", "comun", "typhlosion"],
+  ["Typhlosion", "comun", "typhlosion-hisui", "Hisui"],
+  ["Azumarill", "comun", "azumarill"],
+  ["Corsola", "comun", "corsola"],
+  ["Corsola", "comun", "corsola-galar", "Galar"],
+  ["Porygon2", "comun", "porygon2"],
+  ["Jumpluff", "comun", "jumpluff"],
+  ["Murkrow", "comun", "murkrow"],
+  ["Ursaring", "comun", "ursaring"],
+  ["Kingdra", "comun", "kingdra"],
+  ["Espeon", "comun", "espeon"],
+  ["Umbreon", "comun", "umbreon"],
+  ["Slowking", "comun", "slowking"],
+  ["Slowking", "comun", "slowking-galar", "Galar"],
+  ["Forretress", "comun", "forretress"],
+  ["Steelix", "comun", "steelix"],
+  ["Politoed", "comun", "politoed"],
+  ["Lanturn", "comun", "lanturn"],
+  ["Scizor", "comun", "scizor"],
+
+  // --- COMUNES: GEN 03 ---
+  ["Blaziken", "comun", "blaziken"],
+  ["Swampert", "comun", "swampert"],
+  ["Sceptile", "comun", "sceptile"],
+  ["Ludicolo", "comun", "ludicolo"],
+  ["Pelipper", "comun", "pelipper"],
+  ["Gardevoir", "comun", "gardevoir"],
+  ["Aggron", "comun", "aggron"],
+  ["Absol", "comun", "absol"],
+  ["Sableye", "comun", "sableye"],
+  ["Manectric", "comun", "manectric"],
+  ["Camerupt", "comun", "camerupt"],
+  ["Cradily", "comun", "cradily"],
+  ["Milotic", "comun", "milotic"],
+  ["Dusclops", "comun", "dusclops"],
+  ["Swellow", "comun", "swellow"],
+  ["Medicham", "comun", "medicham"],
+
+  // --- COMUNES: GEN 04 ---
+  ["Gastrodon", "comun", "gastrodon-east"],
+  ["Luxray", "comun", "luxray"],
+  ["Magnezone", "comun", "magnezone"],
+  ["Staraptor", "comun", "staraptor"],
+  ["Lucario", "comun", "lucario"],
+  ["Bronzong", "comun", "bronzong"],
+  ["Hippowdon", "comun", "hippowdon"],
+  ["Tangrowth", "comun", "tangrowth"],
+  ["Honchkrow", "comun", "honchkrow"],
+  ["Togekiss", "comun", "togekiss"],
+  ["Leafeon", "comun", "leafeon"],
+  ["Porygon-Z", "comun", "porygon-z"],
+  ["Glaceon", "comun", "glaceon"],
+  ["Gliscor", "comun", "gliscor"],
+  ["Mamoswine", "comun", "mamoswine"],
+  ["Gallade", "comun", "gallade"],
+  ["Toxicroak", "comun", "toxicroak"],
+  ["Dusknoir", "comun", "dusknoir"],
+  ["Froslass", "comun", "froslass"],
+  ["Rotom", "comun", "rotom"],
+  ["Rotom", "comun", "rotom-heat", "Calor"],
+  ["Rotom", "comun", "rotom-wash", "Lavado"],
+  ["Rotom", "comun", "rotom-frost", "Hielo"],
+  ["Rotom", "comun", "rotom-fan", "Ventilador"],
+  ["Rotom", "comun", "rotom-mow", "Corte"],
+
+  // --- COMUNES: GEN 05 ---
+  ["Samurott", "comun", "samurott"],
+  ["Samurott", "comun", "samurott-hisui", "Hisui"],
+  ["Serperior", "comun", "serperior"],
+  ["Sawsbuck", "comun", "sawsbuck-spring"],
+  ["Emboar", "comun", "emboar"],
+  ["Excadrill", "comun", "excadrill"],
+  ["Conkeldurr", "comun", "conkeldurr"],
+  ["Seismitoad", "comun", "seismitoad"],
+  ["Krookodile", "comun", "krookodile"],
+  ["Reuniclus", "comun", "reuniclus"],
+  ["Amoonguss", "comun", "amoonguss"],
+  ["Jellicent", "comun", "jellicent-male"],
+  ["Eelektross", "comun", "eelektross"],
+  ["Chandelure", "comun", "chandelure"],
+  ["Scrafty", "comun", "scrafty"],
+  ["Volcarona", "comun", "volcarona"],
+  ["Cofagrigus", "comun", "cofagrigus"],
+  ["Runerigus", "comun", "runerigus"],
+  ["Sigilyph", "comun", "sigilyph"],
+  ["Zoroark", "comun", "zoroark"],
+  ["Zoroark", "comun", "zoroark-hisui", "Hisui"],
+
+  // --- COMUNES: GEN 06 ---
+  ["Talonflame", "comun", "talonflame"],
+  ["Delphox", "comun", "delphox"],
+  ["Aegislash", "comun", "aegislash-shield"],
+  ["Tyrantrum", "comun", "tyrantrum"],
+  ["Clawitzer", "comun", "clawitzer"],
+  ["Heliolisk", "comun", "heliolisk"],
+  ["Sylveon", "comun", "sylveon"],
+  ["Hawlucha", "comun", "hawlucha"],
+  ["Dragalge", "comun", "dragalge"],
+  ["Noivern", "comun", "noivern"],
+
+  // --- COMUNES: GEN 07 ---
+  ["Drampa", "comun", "drampa"],
+  ["Lycanroc", "comun", "lycanroc-midday"],
+  ["Crabominable", "comun", "crabominable"],
+  ["Ribombee", "comun", "ribombee"],
+  ["Vikavolt", "comun", "vikavolt"],
+  ["Araquanid", "comun", "araquanid"],
+  ["Salazzle", "comun", "salazzle"],
+  ["Bewear", "comun", "bewear"],
+  ["Tsareena", "comun", "tsareena"],
+  ["Lurantis", "comun", "lurantis"],
+  ["Pyukumuku", "comun", "pyukumuku"],
+  ["Togedemaru", "comun", "togedemaru"],
+  ["Dhelmise", "comun", "dhelmise"],
+
+  // --- COMUNES: GEN 08 ---
+  ["Rillaboom", "comun", "rillaboom"],
+  ["Cinderace", "comun", "cinderace"],
+  ["Inteleon", "comun", "inteleon"],
+  ["Corviknight", "comun", "corviknight"],
+  ["Sirfetch'd", "comun", "sirfetchd"],
+  ["Barraskewda", "comun", "barraskewda"],
+  ["Eiscue", "comun", "eiscue-ice"],
+  ["Polteageist", "comun", "polteageist"],
+  ["Hatterene", "comun", "hatterene"],
+  ["Grimmsnarl", "comun", "grimmsnarl"],
+  ["Kleavor", "comun", "kleavor"],
+  ["Ursaluna", "comun", "ursaluna"],
+  ["Duraludon", "comun", "duraludon"],
+  ["Copperajah", "comun", "copperajah"],
+  ["Falinks", "comun", "falinks"],
+  ["Indeedee", "comun", "indeedee-male"],
+  ["Dracozolt", "comun", "dracozolt"],
+  ["Morpeko", "comun", "morpeko-full-belly"],
+  ["Cursola", "comun", "cursola"],
+  ["Arctozolt", "comun", "arctozolt"],
+  ["Dracovish", "comun", "dracovish"],
+
+  // --- COMUNES: GEN 09 ---
+  ["Houndstone", "comun", "houndstone"],
+  ["Pawmot", "comun", "pawmot"],
+  ["Arboliva", "comun", "arboliva"],
+  ["Garganacl", "comun", "garganacl"],
+  ["Kilowattrel", "comun", "kilowattrel"],
+  ["Orthworm", "comun", "orthworm"],
+  ["Veluza", "comun", "veluza"],
+  ["Tinkaton", "comun", "tinkaton"],
+  ["Glimmora", "comun", "glimmora"],
+  ["Archaludon", "comun", "archaludon"],
+  ["Maushold", "comun", "maushold"],
+  ["Toedscruel", "comun", "toedscruel"],
+  ["Farigiraf", "comun", "farigiraf"],
+  ["Scovillain", "comun", "scovillain"],
+  ["Gholdengo", "comun", "gholdengo"],
+  ["Palafin", "comun", "palafin-zero"]
 ];
 
 const CATS = {
-  reclutamiento:{label:"Reclutamiento Umbral", plural:"reclutamiento"},
-  prohibicion:{label:"Prohibición Umbral", plural:"prohibicion"},
-  comun:{label:"Comunes", plural:"comunes"},
-  pseudo:{label:"Pseudo-legendarios", plural:"pseudo"},
-  legendario:{label:"Legendarios", plural:"legendarios"},
-  ultraente:{label:"Ultra Entes", plural:"ultraente"},
+  reclutamiento: { label: "Reclutamiento Umbral", plural: "reclutamiento" },
+  prohibicion:   { label: "Prohibición Umbral", plural: "prohibicion" },
+  prision:       { label: "Prisión Umbral", plural: "prision" },
+  comun:         { label: "Comunes", plural: "comunes" },
+  pseudo:        { label: "Pseudo-legendarios", plural: "pseudo" },
+  legendario:    { label: "Legendarios", plural: "legendarios" },
+  ultraente:     { label: "Ultra Entes", plural: "ultraente" },
 };
-const CAT_ORDER = ["reclutamiento","prohibicion","comun","pseudo","legendario","ultraente"];
-const COMMUNITY_CATS = new Set(["reclutamiento","prohibicion"]);
+
+const CAT_ORDER = ["reclutamiento", "prohibicion", "prision", "comun", "pseudo", "legendario", "ultraente"];
+
+const SUBTITLES = {
+  reclutamiento: "Elegido por la comunidad",
+  prohibicion: "Elegido por la comunidad",
+  prision: "Pokemon baneados por esta temporada, no pueden ser reclutados hasta la proxima temporada"
+};
 
 const TYPE_ES = {
   normal:"Normal", fire:"Fuego", water:"Agua", electric:"Eléctrico", grass:"Planta",
@@ -516,6 +674,7 @@ const tabsEl = document.getElementById("tabs");
 const allTabBtn = mkTab("todos","Todos");
 tabsEl.appendChild(allTabBtn);
 CAT_ORDER.forEach(c => tabsEl.appendChild(mkTab(c, CATS[c].label)));
+
 function mkTab(key,label){
   const b = document.createElement("button");
   b.textContent = label;
@@ -542,6 +701,7 @@ TYPE_ORDER.forEach(t=>{
   });
   typeRow.appendChild(chip);
 });
+
 const clearBtn = document.createElement("button");
 clearBtn.className = "clear-types";
 clearBtn.textContent = "Limpiar tipos";
@@ -559,8 +719,11 @@ document.getElementById("search").addEventListener("input", e=>{
 
 /* ---------------- STATS ---------------- */
 CAT_ORDER.forEach(c=>{
-  const count = new Set(ROSTER.filter(r=>r[1]===c).map(r=>r[0])).size;
-  document.getElementById(`stat-${c}`).textContent = count;
+  const statEl = document.getElementById(`stat-${c}`);
+  if(statEl) {
+    const count = new Set(ROSTER.filter(r=>r[1]===c).map(r=>r[0])).size;
+    statEl.textContent = count;
+  }
 });
 
 /* ---------------- FETCH ---------------- */
@@ -770,10 +933,10 @@ function render(){
     label.textContent = CATS[cat].label;
     main.appendChild(label);
 
-    if(COMMUNITY_CATS.has(cat)){
+    if(SUBTITLES[cat]){
       const sub = document.createElement("div");
       sub.className = "section-sub";
-      sub.textContent = "Elegido por la comunidad";
+      sub.textContent = SUBTITLES[cat];
       main.appendChild(sub);
     }
 
@@ -782,11 +945,21 @@ function render(){
     items.forEach(entry=>{
       const [name, cat2, slug, form] = entry;
       const card = document.createElement("div");
-      card.className = "card" + (cat2 === "prohibicion" ? " banned" : "");
+      let catClass = "";
+      if(cat2 === "prohibicion") catClass = " banned";
+      else if(cat2 === "prision") catClass = " prison";
+
+      card.className = "card" + catClass;
       card.dataset.slug = slug;
       card.dataset.name = name;
+      
+      let tagHtml = "";
+      if(cat2 === "prohibicion") tagHtml = `<span class="ban-tag">Prohibido</span>`;
+      else if(cat2 === "prision") tagHtml = `<span class="prison-tag">Prisión</span>`;
+      else if(form) tagHtml = `<span class="form-tag">${form}</span>`;
+
       card.innerHTML = `
-        ${cat2 === "prohibicion" ? `<span class="ban-tag">Prohibido</span>` : (form ? `<span class="form-tag">${form}</span>`:"")}
+        ${tagHtml}
         <div class="img-wrap"><div class="skel"></div></div>
         <div class="name">${name}${form?` <span style="color:var(--text-faint);font-weight:500;">(${form})</span>`:""}</div>
         <div class="types"></div>

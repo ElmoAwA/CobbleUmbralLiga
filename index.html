@@ -885,6 +885,10 @@ function passesFilter(entry){
   return true;
 }
 
+const CATEGORY_NOTES = {
+  prision: "Pokémon baneados por esta temporada. No pueden ser reclutados hasta la siguiente temporada.",
+};
+
 function render(){
   const filtered = ROSTER.filter(passesFilter);
   document.getElementById("result-count").textContent = `${filtered.length} Pokémon mostrados`;
@@ -912,6 +916,13 @@ function render(){
       sub.className = "section-sub";
       sub.textContent = "Elegido por la comunidad";
       main.appendChild(sub);
+    }
+
+    if(CATEGORY_NOTES[cat]){
+      const note = document.createElement("div");
+      note.className = "section-sub";
+      note.textContent = CATEGORY_NOTES[cat];
+      main.appendChild(note);
     }
 
     main.appendChild(buildGrid(items));

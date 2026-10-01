@@ -344,6 +344,43 @@ footer {
 }
 footer a { color: var(--text-dim); }
 
+/* ---------- FILTRO POR STATS ---------- */
+.stat-filter { position: relative; }
+.stat-filter-btn {
+  font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.92rem;
+  background: rgba(255,181,69,0.10); border: 1px solid var(--amber); color: var(--amber);
+  padding: 0.5rem 0.95rem; border-radius: 8px; cursor: pointer;
+  display: flex; align-items: center; gap: 0.45rem; transition: border-color .15s, color .15s, background .15s;
+}
+.stat-filter-btn:hover, .stat-filter.open .stat-filter-btn { background: rgba(255,181,69,0.20); color: #ffd08a; }
+.stat-filter-btn.active { background: var(--amber); border-color: var(--amber); color: #0c0818; }
+.stat-filter-btn .caret { font-size: 0.65rem; transition: transform .15s; }
+.stat-filter.open .caret { transform: rotate(180deg); }
+.stat-menu {
+  display: none; position: absolute; top: calc(100% + 8px); left: 0; z-index: 30; min-width: 200px;
+  background: var(--surface-hi); border: 1px solid var(--amber); border-radius: var(--radius);
+  padding: 0.4rem; box-shadow: 0 12px 30px rgba(0,0,0,0.5);
+}
+.stat-filter.open .stat-menu { display: block; }
+.stat-option {
+  width: 100%; display: flex; align-items: center; gap: 0.6rem; text-align: left;
+  background: transparent; border: none; color: var(--text-dim); cursor: pointer;
+  font-family: 'Rajdhani', sans-serif; font-weight: 600; font-size: 0.92rem;
+  padding: 0.45rem 0.6rem; border-radius: 7px;
+}
+.stat-option:hover { background: var(--surface); color: var(--text); }
+.stat-option.selected { background: var(--surface); color: var(--text); }
+.stat-option .sq { width: 10px; height: 10px; border-radius: 3px; flex-shrink: 0; }
+.stat-option.clear { color: var(--text-faint); border-top: 1px solid var(--line); border-radius: 0 0 7px 7px; margin-top: 0.25rem; padding-top: 0.55rem; }
+
+.stat-badge {
+  display: none; position: absolute; bottom: 6px; right: 6px; min-width: 28px; text-align: center;
+  font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 0.78rem; line-height: 1;
+  color: #0c0818; padding: 4px 5px; border-radius: 5px; box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+.card.has-stat .stat-badge { display: block; }
+.stat-badge small { display: block; font-size: 0.5rem; font-weight: 700; opacity: 0.75; margin-bottom: 1px; letter-spacing: 0.02em; }
+
 @media (prefers-reduced-motion: reduce){
   * { animation: none !important; transition: none !important; }
 }
@@ -376,6 +413,12 @@ footer a { color: var(--text-dim); }
   <div class="controls-row">
     <div class="search-wrap">
       <input type="text" id="search" placeholder="Buscar Pokémon…" autocomplete="off">
+    </div>
+    <div class="stat-filter" id="stat-filter">
+      <button type="button" class="stat-filter-btn" id="stat-filter-btn" aria-haspopup="true" aria-expanded="false">
+        <span id="stat-filter-label">Ordenar por stat</span><span class="caret">▼</span>
+      </button>
+      <div class="stat-menu" id="stat-menu"></div>
     </div>
     <div class="tabs" id="tabs"></div>
   </div>
@@ -645,7 +688,7 @@ const TYPE_ES = {
 const TYPE_ORDER = Object.keys(TYPE_ES);
 
 /* ---------------- STATE ---------------- */
-const state = { category:"todos", types:new Set(), query:"" };
+const state = { category:"todos", types:new Set(), query:"", stat:null };
 const cache = {};
 const speciesCache = {};
 
@@ -694,6 +737,67 @@ document.getElementById("search").addEventListener("input", e=>{
   state.query = e.target.value.trim().toLowerCase();
   render();
 });
+
+/* ---------------- FILTRO POR STATS ---------------- */
+const STAT_OPTIONS = [
+  {key:"hp", label:"PS", full:"PS", color:"#FF5959"},
+  {key:"attack", label:"ATQ", full:"Ataque", color:"#F5AC4F"},
+  {key:"defense", label:"DEF", full:"Defensa", color:"#F2D04F"},
+  {key:"special-attack", label:"AT. ESP.", full:"Ataque Esp.", color:"#6FA8FF"},
+  {key:"special-defense", label:"DEF. ESP.", full:"Defensa Esp.", color:"#72D6A0"},
+  {key:"speed", label:"VEL.", full:"Velocidad", color:"#C27CFF"},
+  {key:"total", label:"TOTAL", full:"Total", color:"#ffb545"},
+];
+const statFilterEl = document.getElementById("stat-filter");
+const statBtn = document.getElementById("stat-filter-btn");
+const statMenu = document.getElementById("stat-menu");
+const statLabel = document.getElementById("stat-filter-label");
+
+STAT_OPTIONS.forEach(o=>{
+  const b = document.createElement("button");
+  b.type = "button";
+  b.className = "stat-option";
+  b.dataset.key = o.key;
+  b.innerHTML = `<span class="sq" style="background:${o.color}"></span>${o.full}`;
+  b.addEventListener("click", ()=>setStat(o.key));
+  statMenu.appendChild(b);
+});
+const clearStatBtn = document.createElement("button");
+clearStatBtn.type = "button";
+clearStatBtn.className = "stat-option clear";
+clearStatBtn.textContent = "Quitar orden por stat";
+clearStatBtn.addEventListener("click", ()=>setStat(null));
+statMenu.appendChild(clearStatBtn);
+
+function setStat(key){
+  state.stat = key;
+  const opt = STAT_OPTIONS.find(o=>o.key===key);
+  statLabel.textContent = opt ? `Stat: ${opt.label}` : "Ordenar por stat";
+  statBtn.classList.toggle("active", !!opt);
+  [...statMenu.querySelectorAll(".stat-option[data-key]")].forEach(x=>x.classList.toggle("selected", x.dataset.key===key));
+  statFilterEl.classList.remove("open");
+  statBtn.setAttribute("aria-expanded","false");
+  render();
+}
+statBtn.addEventListener("click", e=>{
+  e.stopPropagation();
+  const open = statFilterEl.classList.toggle("open");
+  statBtn.setAttribute("aria-expanded", open);
+});
+document.addEventListener("click", e=>{
+  if(!statFilterEl.contains(e.target)){
+    statFilterEl.classList.remove("open");
+    statBtn.setAttribute("aria-expanded","false");
+  }
+});
+
+function getStatValue(slug, key){
+  const d = cache[slug];
+  if(!d || !d.stats || !d.stats.length) return null;
+  if(key === "total") return d.stats.reduce((sum,s)=>sum+s.value,0);
+  const s = d.stats.find(x=>x.name===key);
+  return s ? s.value : null;
+}
 
 /* ---------------- STATS ---------------- */
 STATS_KEYS.forEach(c=>{
@@ -870,6 +974,21 @@ function paintCard(card, slug){
   }
   const typesEl = card.querySelector(".types");
   typesEl.innerHTML = data.types.map(t=>`<span class="type-dot" style="background:var(--t-${t})" title="${TYPE_ES[t]||t}"></span>`).join("");
+  updateBadge(card, slug);
+}
+
+function updateBadge(card, slug){
+  const badge = card.querySelector(".stat-badge");
+  if(!badge) return;
+  const opt = STAT_OPTIONS.find(o=>o.key===state.stat);
+  const val = opt ? getStatValue(slug, opt.key) : null;
+  if(!opt || val === null){
+    card.classList.remove("has-stat");
+    return;
+  }
+  badge.style.background = opt.color;
+  badge.innerHTML = `<small>${opt.label}</small>${val}`;
+  card.classList.add("has-stat");
 }
 
 /* ---------------- RENDER GRID ---------------- */
@@ -892,7 +1011,9 @@ const CATEGORY_NOTES = {
 
 function render(){
   const filtered = ROSTER.filter(passesFilter);
-  document.getElementById("result-count").textContent = `${filtered.length} Pokémon mostrados`;
+  const statOpt = STAT_OPTIONS.find(o=>o.key===state.stat);
+  document.getElementById("result-count").textContent =
+    `${filtered.length} Pokémon mostrados` + (statOpt ? ` · ordenados por ${statOpt.full} (mayor a menor)` : "");
 
   main.innerHTML = "";
   if(!filtered.length){
@@ -907,6 +1028,10 @@ function render(){
   groups.forEach(cat=>{
     const items = filtered.filter(f=>f[1]===cat);
     if(!items.length) return;
+    /* Orden por stat SOLO dentro de cada categoría: las secciones/tags no se mueven */
+    if(statOpt){
+      items.sort((a,b)=>(getStatValue(b[2],statOpt.key) ?? -1) - (getStatValue(a[2],statOpt.key) ?? -1));
+    }
     const label = document.createElement("div");
     label.className = "section-label";
     label.textContent = CATS[cat].label;
@@ -944,6 +1069,7 @@ function buildGrid(items){
       <div class="img-wrap"><div class="skel"></div></div>
       <div class="name">${name}${form?` <span style="color:var(--text-faint);font-weight:500;">(${form})</span>`:""}</div>
       <div class="types"></div>
+      <span class="stat-badge"></span>
     `;
     card.addEventListener("mouseenter", e=>openPanel(card, slug, name, form));
     card.addEventListener("mouseleave", closePanelSoon);

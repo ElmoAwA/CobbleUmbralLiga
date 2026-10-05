@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: Heian_Akuma añadió a Bellsprout",
+  "ultima_actualizacion": "Ticket de Liga: Mark606 añadió a Sinistcha",
   "prision_total": [
     {
       "name": "Raichu",
@@ -108,8 +108,8 @@
       "semana": 1
     },
     {
-      "name": "Bellsprout",
-      "slug": "bellsprout",
+      "name": "Sinistcha",
+      "slug": "Sinistcha",
       "semana": 1
     }
   ],

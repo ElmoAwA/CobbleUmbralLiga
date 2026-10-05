@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Actualización mensual de Regulación Octubre: Apertura de Prisión Umbral y reinicio de Reclutamiento.",
+  "ultima_actualizacion": "Ticket de Liga: Heian_Akuma añadió a Bellsprout",
   "prision_total": [
     {
       "name": "Raichu",
@@ -105,6 +105,11 @@
     {
       "name": "Golisopod",
       "slug": "golisopod",
+      "semana": 1
+    },
+    {
+      "name": "Bellsprout",
+      "slug": "bellsprout",
       "semana": 1
     }
   ],

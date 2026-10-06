@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA añadió a Golduck",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Amoonguss",
   "prision_total": [
     {
       "name": "Raichu",
@@ -94,6 +94,10 @@
       "name": "Unown",
       "slug": "unown",
       "placeholder": true
+    },
+    {
+      "name": "Amoonguss",
+      "slug": "amoonguss"
     }
   ],
   "reclutamiento_total": [
@@ -568,10 +572,6 @@
     {
       "name": "Sawsbuck",
       "slug": "sawsbuck"
-    },
-    {
-      "name": "Amoonguss",
-      "slug": "amoonguss"
     },
     {
       "name": "Jellicent",

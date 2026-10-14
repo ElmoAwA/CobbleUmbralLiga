@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: EnvyGun añadió a Kingambit",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Rotom",
   "prision_total": [
     {
       "name": "Raichu",
@@ -98,6 +98,30 @@
     {
       "name": "Amoonguss",
       "slug": "amoonguss"
+    },
+    {
+      "name": "Rotom",
+      "slug": "rotom"
+    },
+    {
+      "name": "Rotom (Calor)",
+      "slug": "rotom-heat"
+    },
+    {
+      "name": "Rotom (Lavado)",
+      "slug": "rotom-wash"
+    },
+    {
+      "name": "Rotom (Hielo)",
+      "slug": "rotom-frost"
+    },
+    {
+      "name": "Rotom (Ventilador)",
+      "slug": "rotom-fan"
+    },
+    {
+      "name": "Rotom (Corte)",
+      "slug": "rotom-mow"
     }
   ],
   "reclutamiento_total": [
@@ -493,30 +517,6 @@
     {
       "name": "Froslass",
       "slug": "froslass"
-    },
-    {
-      "name": "Rotom",
-      "slug": "rotom"
-    },
-    {
-      "name": "Rotom (Calor)",
-      "slug": "rotom-heat"
-    },
-    {
-      "name": "Rotom (Lavado)",
-      "slug": "rotom-wash"
-    },
-    {
-      "name": "Rotom (Hielo)",
-      "slug": "rotom-frost"
-    },
-    {
-      "name": "Rotom (Ventilador)",
-      "slug": "rotom-fan"
-    },
-    {
-      "name": "Rotom (Corte)",
-      "slug": "rotom-mow"
     },
     {
       "name": "Serperior",

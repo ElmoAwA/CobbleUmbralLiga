@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Rotom",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Slowking",
   "prision_total": [
     {
       "name": "Raichu",
@@ -122,6 +122,14 @@
     {
       "name": "Rotom (Corte)",
       "slug": "rotom-mow"
+    },
+    {
+      "name": "Slowking",
+      "slug": "slowking"
+    },
+    {
+      "name": "Slowking (Galar)",
+      "slug": "slowking-galar"
     }
   ],
   "reclutamiento_total": [
@@ -337,14 +345,6 @@
     {
       "name": "Murkrow",
       "slug": "murkrow"
-    },
-    {
-      "name": "Slowking",
-      "slug": "slowking"
-    },
-    {
-      "name": "Slowking (Galar)",
-      "slug": "slowking-galar"
     },
     {
       "name": "Forretress",

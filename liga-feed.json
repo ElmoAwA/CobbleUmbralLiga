@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Slowking",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA añadió a Lopunny",
   "prision_total": [
     {
       "name": "Raichu",
@@ -156,6 +156,11 @@
     {
       "name": "Kingambit",
       "slug": "kingambit",
+      "semana": 1
+    },
+    {
+      "name": "Lopunny",
+      "slug": "lopunny",
       "semana": 1
     }
   ],

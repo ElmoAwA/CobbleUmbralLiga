@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Leafeon",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Vaporeon",
   "prision_total": [
     {
       "name": "Raichu",
@@ -162,6 +162,10 @@
     {
       "name": "Leafeon",
       "slug": "leafeon"
+    },
+    {
+      "name": "Vaporeon",
+      "slug": "vaporeon"
     }
   ],
   "reclutamiento_total": [
@@ -310,10 +314,6 @@
     {
       "name": "Gyarados",
       "slug": "gyarados"
-    },
-    {
-      "name": "Vaporeon",
-      "slug": "vaporeon"
     },
     {
       "name": "Porygon",

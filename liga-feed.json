@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA añadió a Lopunny",
+  "ultima_actualizacion": "Ticket de Liga: Pra1ds baneó a Eevee",
   "prision_total": [
     {
       "name": "Raichu",
@@ -130,6 +130,10 @@
     {
       "name": "Slowking (Galar)",
       "slug": "slowking-galar"
+    },
+    {
+      "name": "Eevee",
+      "slug": "eevee"
     }
   ],
   "reclutamiento_total": [
@@ -278,10 +282,6 @@
     {
       "name": "Gyarados",
       "slug": "gyarados"
-    },
-    {
-      "name": "Eevee",
-      "slug": "eevee"
     },
     {
       "name": "Vaporeon",

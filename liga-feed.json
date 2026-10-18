@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Jolteon",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Sylveon",
   "prision_total": [
     {
       "name": "Raichu",
@@ -154,6 +154,10 @@
     {
       "name": "Jolteon",
       "slug": "jolteon"
+    },
+    {
+      "name": "Sylveon",
+      "slug": "sylveon"
     }
   ],
   "reclutamiento_total": [
@@ -626,10 +630,6 @@
     {
       "name": "Tyrantrum",
       "slug": "tyrantrum"
-    },
-    {
-      "name": "Sylveon",
-      "slug": "sylveon"
     },
     {
       "name": "Hawlucha",

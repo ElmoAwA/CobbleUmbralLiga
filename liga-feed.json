@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: Pra1ds baneó a Eevee",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Flareon",
   "prision_total": [
     {
       "name": "Raichu",
@@ -134,6 +134,10 @@
     {
       "name": "Eevee",
       "slug": "eevee"
+    },
+    {
+      "name": "Flareon",
+      "slug": "flareon"
     }
   ],
   "reclutamiento_total": [
@@ -290,10 +294,6 @@
     {
       "name": "Jolteon",
       "slug": "jolteon"
-    },
-    {
-      "name": "Flareon",
-      "slug": "flareon"
     },
     {
       "name": "Porygon",

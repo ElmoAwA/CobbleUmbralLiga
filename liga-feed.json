@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA añadió a Espathra",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Dracovish",
   "prision_total": [
     {
       "name": "Raichu",
@@ -166,6 +166,10 @@
     {
       "name": "Vaporeon",
       "slug": "vaporeon"
+    },
+    {
+      "name": "Dracovish",
+      "slug": "dracovish"
     }
   ],
   "reclutamiento_total": [
@@ -777,10 +781,6 @@
     {
       "name": "Arctozolt",
       "slug": "arctozolt"
-    },
-    {
-      "name": "Dracovish",
-      "slug": "dracovish"
     },
     {
       "name": "Duraludon",

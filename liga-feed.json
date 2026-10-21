@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Octubre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA añadió a Floette",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA añadió a Florges",
   "prision_total": [
     {
       "name": "Raichu",
@@ -202,6 +202,11 @@
     {
       "name": "Floette",
       "slug": "floette",
+      "semana": 1
+    },
+    {
+      "name": "Florges",
+      "slug": "florges",
       "semana": 1
     }
   ],

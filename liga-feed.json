@@ -1,92 +1,152 @@
 {
-  "temporada": "Liga Umbral · Regulación Octubre 2026",
+  "temporada": "Liga Umbral · Regulación Noviembre 2026",
   "semana_actual": 1,
   "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Dracovish",
   "prision_total": [
     {
-      "name": "Raichu",
-      "slug": "raichu",
-      "pokedex": 26
+      "name": "Golduck",
+      "slug": "golduck",
+      "pokedex": 55
     },
     {
-      "name": "Darmanitan (Galar)",
-      "slug": "darmanitan-galar-standard",
-      "pokedex": 555
+      "name": "Eevee",
+      "slug": "eevee",
+      "pokedex": 133
     },
     {
-      "name": "Ferrothorn",
-      "slug": "ferrothorn",
-      "pokedex": 598
+      "name": "Vaporeon",
+      "slug": "vaporeon",
+      "pokedex": 134
     },
     {
-      "name": "Haxorus",
-      "slug": "haxorus",
-      "pokedex": 612
+      "name": "Jolteon",
+      "slug": "jolteon",
+      "pokedex": 135
     },
     {
-      "name": "Greninja",
-      "slug": "greninja",
-      "pokedex": 658
+      "name": "Flareon",
+      "slug": "flareon",
+      "pokedex": 136
     },
     {
-      "name": "Greninja (Ash)",
-      "slug": "greninja-ash",
-      "pokedex": 658
+      "name": "Espeon",
+      "slug": "espeon",
+      "pokedex": 196
     },
     {
-      "name": "Greninja (Fuerte Afecto)",
-      "slug": "greninja-battle-bond",
-      "pokedex": 658
+      "name": "Umbreon",
+      "slug": "umbreon",
+      "pokedex": 197
     },
     {
-      "name": "Toxapex",
-      "slug": "toxapex",
-      "pokedex": 748
+      "name": "Slowking",
+      "slug": "slowking",
+      "pokedex": 199
     },
     {
-      "name": "Flapple",
-      "slug": "flapple",
-      "pokedex": 841
+      "name": "Slowking (Galar)",
+      "slug": "slowking-galar",
+      "pokedex": 199
     },
     {
-      "name": "Appletun",
-      "slug": "appletun",
-      "pokedex": 842
+      "name": "Shedinja",
+      "slug": "shedinja",
+      "pokedex": 292
     },
     {
-      "name": "Basculegion",
-      "slug": "basculegion-male",
-      "pokedex": 902
+      "name": "Lopunny",
+      "slug": "lopunny",
+      "pokedex": 428
     },
     {
-      "name": "Sneasler",
-      "slug": "sneasler",
-      "pokedex": 903
+      "name": "Leafeon",
+      "slug": "leafeon",
+      "pokedex": 470
     },
     {
-      "name": "Meowscarada",
-      "slug": "meowscarada",
-      "pokedex": 908
+      "name": "Glaceon",
+      "slug": "glaceon",
+      "pokedex": 471
     },
     {
-      "name": "Skeledirge",
-      "slug": "skeledirge",
-      "pokedex": 911
+      "name": "Rotom",
+      "slug": "rotom",
+      "pokedex": 479
     },
     {
-      "name": "Annihilape",
-      "slug": "annihilape",
-      "pokedex": 979
+      "name": "Rotom (Calor)",
+      "slug": "rotom-heat",
+      "pokedex": 479
     },
     {
-      "name": "Dipplin",
-      "slug": "dipplin",
-      "pokedex": 1011
+      "name": "Rotom (Lavado)",
+      "slug": "rotom-wash",
+      "pokedex": 479
     },
     {
-      "name": "Hydrapple",
-      "slug": "hydrapple",
-      "pokedex": 1019
+      "name": "Rotom (Hielo)",
+      "slug": "rotom-frost",
+      "pokedex": 479
+    },
+    {
+      "name": "Rotom (Ventilador)",
+      "slug": "rotom-fan",
+      "pokedex": 479
+    },
+    {
+      "name": "Rotom (Corte)",
+      "slug": "rotom-mow",
+      "pokedex": 479
+    },
+    {
+      "name": "Amoonguss",
+      "slug": "amoonguss",
+      "pokedex": 591
+    },
+    {
+      "name": "Floette",
+      "slug": "floette",
+      "pokedex": 670
+    },
+    {
+      "name": "Florges",
+      "slug": "florges",
+      "pokedex": 671
+    },
+    {
+      "name": "Sylveon",
+      "slug": "sylveon",
+      "pokedex": 700
+    },
+    {
+      "name": "Wimpod",
+      "slug": "wimpod",
+      "pokedex": 767
+    },
+    {
+      "name": "Golisopod",
+      "slug": "golisopod",
+      "pokedex": 768
+    },
+    {
+      "name": "Dracovish",
+      "slug": "dracovish",
+      "pokedex": 882
+    },
+    {
+      "name": "Espathra",
+      "slug": "espathra",
+      "pokedex": 956
+    },
+    {
+      "name": "Kingambit",
+      "slug": "kingambit",
+      "pokedex": 983
+    },
+    {
+      "name": "Sinistcha",
+      "slug": "Sinistcha",
+      "pokedex": 1013
     }
   ],
   "prohibicion_total": [
@@ -94,181 +154,98 @@
       "name": "Unown",
       "slug": "unown",
       "placeholder": true
-    },
-    {
-      "name": "Amoonguss",
-      "slug": "amoonguss"
-    },
-    {
-      "name": "Rotom",
-      "slug": "rotom"
-    },
-    {
-      "name": "Rotom (Calor)",
-      "slug": "rotom-heat"
-    },
-    {
-      "name": "Rotom (Lavado)",
-      "slug": "rotom-wash"
-    },
-    {
-      "name": "Rotom (Hielo)",
-      "slug": "rotom-frost"
-    },
-    {
-      "name": "Rotom (Ventilador)",
-      "slug": "rotom-fan"
-    },
-    {
-      "name": "Rotom (Corte)",
-      "slug": "rotom-mow"
-    },
-    {
-      "name": "Slowking",
-      "slug": "slowking"
-    },
-    {
-      "name": "Slowking (Galar)",
-      "slug": "slowking-galar"
-    },
-    {
-      "name": "Eevee",
-      "slug": "eevee"
-    },
-    {
-      "name": "Flareon",
-      "slug": "flareon"
-    },
-    {
-      "name": "Glaceon",
-      "slug": "glaceon"
-    },
-    {
-      "name": "Umbreon",
-      "slug": "umbreon"
-    },
-    {
-      "name": "Espeon",
-      "slug": "espeon"
-    },
-    {
-      "name": "Jolteon",
-      "slug": "jolteon"
-    },
-    {
-      "name": "Sylveon",
-      "slug": "sylveon"
-    },
-    {
-      "name": "Leafeon",
-      "slug": "leafeon"
-    },
-    {
-      "name": "Vaporeon",
-      "slug": "vaporeon"
-    },
-    {
-      "name": "Dracovish",
-      "slug": "dracovish"
     }
   ],
   "reclutamiento_total": [
     {
-      "name": "Wimpod",
-      "slug": "wimpod",
-      "semana": 1
-    },
-    {
-      "name": "Golisopod",
-      "slug": "golisopod",
-      "semana": 1
-    },
-    {
-      "name": "Sinistcha",
-      "slug": "Sinistcha",
-      "semana": 1
-    },
-    {
-      "name": "Golduck",
-      "slug": "golduck",
-      "semana": 1
-    },
-    {
-      "name": "Kingambit",
-      "slug": "kingambit",
-      "semana": 1
-    },
-    {
-      "name": "Lopunny",
-      "slug": "lopunny",
-      "semana": 1
-    },
-    {
-      "name": "Floette",
-      "slug": "floette",
-      "semana": 1
-    },
-    {
-      "name": "Florges",
-      "slug": "florges",
-      "semana": 1
-    },
-    {
-      "name": "Espathra",
-      "slug": "espathra",
-      "semana": 1
+      "name": "Unown",
+      "slug": "unown",
+      "semana": 1,
+      "placeholder": true
     }
   ],
   "legendarios_total": [
     {
-      "name": "Thundurus",
-      "slug": "thundurus-incarnate"
+      "name": "Tapu Koko",
+      "slug": "tapu-koko"
     },
     {
-      "name": "Tornadus",
-      "slug": "tornadus-incarnate"
+      "name": "Tapu Lele",
+      "slug": "tapu-lele"
     },
     {
-      "name": "Landorus",
-      "slug": "landorus-incarnate"
+      "name": "Tapu Fini",
+      "slug": "tapu-fini"
     },
     {
-      "name": "Kyogre",
-      "slug": "kyogre"
+      "name": "Kubfu",
+      "slug": "kubfu"
     },
     {
-      "name": "Groudon",
-      "slug": "groudon"
+      "name": "Ogerpon",
+      "slug": "ogerpon"
     }
   ],
   "pseudo_total": [
     {
-      "name": "Dragonite",
-      "slug": "dragonite"
+      "name": "Salamence",
+      "slug": "salamence"
     },
     {
-      "name": "Tyranitar",
-      "slug": "tyranitar"
+      "name": "Hydreigon",
+      "slug": "hydreigon"
     },
     {
-      "name": "Baxcalibur",
-      "slug": "baxcalibur"
+      "name": "Goodra",
+      "slug": "goodra"
+    },
+    {
+      "name": "Goodra (Hisui)",
+      "slug": "goodra-hisui"
+    },
+    {
+      "name": "Kommo-o",
+      "slug": "kommo-o"
     }
   ],
   "ultraentes_total": [
     {
-      "name": "Pheromosa",
-      "slug": "pheromosa"
+      "name": "Xurkitree",
+      "slug": "xurkitree"
     },
     {
-      "name": "Naganadel",
-      "slug": "naganadel"
+      "name": "Kartana",
+      "slug": "kartana"
     }
   ],
   "comunes_total": [
     {
-      "name": "Nidoking",
-      "slug": "nidoking"
+      "name": "Venusaur",
+      "slug": "venusaur"
+    },
+    {
+      "name": "Charizard",
+      "slug": "charizard"
+    },
+    {
+      "name": "Blastoise",
+      "slug": "blastoise"
+    },
+    {
+      "name": "Butterfree",
+      "slug": "butterfree"
+    },
+    {
+      "name": "Beedrill",
+      "slug": "beedrill"
+    },
+    {
+      "name": "Raichu",
+      "slug": "raichu"
+    },
+    {
+      "name": "Sandslash",
+      "slug": "sandslash"
     },
     {
       "name": "Ninetales",
@@ -279,72 +256,44 @@
       "slug": "ninetales-alola"
     },
     {
-      "name": "Arcanine",
-      "slug": "arcanine"
-    },
-    {
-      "name": "Arcanine (Hisui)",
-      "slug": "arcanine-hisui"
-    },
-    {
-      "name": "Poliwrath",
-      "slug": "poliwrath"
-    },
-    {
-      "name": "Tentacruel",
-      "slug": "tentacruel"
-    },
-    {
-      "name": "Slowbro",
-      "slug": "slowbro"
-    },
-    {
-      "name": "Slowbro (Galar)",
-      "slug": "slowbro-galar"
+      "name": "Machamp",
+      "slug": "machamp"
     },
     {
       "name": "Gengar",
       "slug": "gengar"
     },
     {
-      "name": "Exeggutor",
-      "slug": "exeggutor"
+      "name": "Kingler",
+      "slug": "kingler"
     },
     {
-      "name": "Pinsir",
-      "slug": "pinsir"
+      "name": "Weezing",
+      "slug": "weezing"
     },
     {
-      "name": "Tauros",
-      "slug": "tauros"
-    },
-    {
-      "name": "Tauros (Combate)",
-      "slug": "tauros-paldea-combat-breed"
-    },
-    {
-      "name": "Tauros (Llama)",
-      "slug": "tauros-paldea-blaze-breed"
-    },
-    {
-      "name": "Tauros (Acuático)",
-      "slug": "tauros-paldea-aqua-breed"
+      "name": "Weezing (Galar)",
+      "slug": "weezing-galar"
     },
     {
       "name": "Gyarados",
       "slug": "gyarados"
     },
     {
-      "name": "Porygon",
-      "slug": "porygon"
+      "name": "Lapras",
+      "slug": "lapras"
+    },
+    {
+      "name": "Ditto",
+      "slug": "ditto"
+    },
+    {
+      "name": "Aerodactyl",
+      "slug": "aerodactyl"
     },
     {
       "name": "Snorlax",
       "slug": "snorlax"
-    },
-    {
-      "name": "Meganium",
-      "slug": "meganium"
     },
     {
       "name": "Typhlosion",
@@ -355,22 +304,6 @@
       "slug": "typhlosion-hisui"
     },
     {
-      "name": "Feraligatr",
-      "slug": "feraligatr"
-    },
-    {
-      "name": "Crobat",
-      "slug": "crobat"
-    },
-    {
-      "name": "Lanturn",
-      "slug": "lanturn"
-    },
-    {
-      "name": "Azumarill",
-      "slug": "azumarill"
-    },
-    {
       "name": "Politoed",
       "slug": "politoed"
     },
@@ -379,48 +312,16 @@
       "slug": "jumpluff"
     },
     {
-      "name": "Murkrow",
-      "slug": "murkrow"
-    },
-    {
-      "name": "Forretress",
-      "slug": "forretress"
-    },
-    {
-      "name": "Steelix",
-      "slug": "steelix"
-    },
-    {
-      "name": "Scizor",
-      "slug": "scizor"
-    },
-    {
       "name": "Ursaring",
       "slug": "ursaring"
     },
     {
-      "name": "Corsola",
-      "slug": "corsola"
-    },
-    {
-      "name": "Corsola (Galar)",
-      "slug": "corsola-galar"
-    },
-    {
-      "name": "Kingdra",
-      "slug": "kingdra"
-    },
-    {
-      "name": "Porygon2",
-      "slug": "porygon2"
+      "name": "Houndoom",
+      "slug": "houndoom"
     },
     {
       "name": "Sceptile",
       "slug": "sceptile"
-    },
-    {
-      "name": "Blaziken",
-      "slug": "blaziken"
     },
     {
       "name": "Swampert",
@@ -431,136 +332,68 @@
       "slug": "ludicolo"
     },
     {
-      "name": "Swellow",
-      "slug": "swellow"
-    },
-    {
       "name": "Pelipper",
       "slug": "pelipper"
     },
     {
-      "name": "Gardevoir",
-      "slug": "gardevoir"
+      "name": "Slaking",
+      "slug": "slaking"
     },
     {
-      "name": "Sableye",
-      "slug": "sableye"
-    },
-    {
-      "name": "Aggron",
-      "slug": "aggron"
-    },
-    {
-      "name": "Medicham",
-      "slug": "medicham"
-    },
-    {
-      "name": "Manectric",
-      "slug": "manectric"
+      "name": "Mawile",
+      "slug": "mawile"
     },
     {
       "name": "Camerupt",
       "slug": "camerupt"
     },
     {
-      "name": "Cradily",
-      "slug": "cradily"
+      "name": "Torkoal",
+      "slug": "torkoal"
     },
     {
       "name": "Milotic",
       "slug": "milotic"
     },
     {
-      "name": "Dusclops",
-      "slug": "dusclops"
+      "name": "Glalie",
+      "slug": "glalie"
     },
     {
-      "name": "Absol",
-      "slug": "absol"
+      "name": "Empoleon",
+      "slug": "empoleon"
     },
     {
       "name": "Staraptor",
       "slug": "staraptor"
     },
     {
-      "name": "Luxray",
-      "slug": "luxray"
-    },
-    {
       "name": "Gastrodon",
       "slug": "gastrodon"
-    },
-    {
-      "name": "Honchkrow",
-      "slug": "honchkrow"
     },
     {
       "name": "Bronzong",
       "slug": "bronzong"
     },
     {
-      "name": "Lucario",
-      "slug": "lucario"
-    },
-    {
       "name": "Hippowdon",
       "slug": "hippowdon"
-    },
-    {
-      "name": "Toxicroak",
-      "slug": "toxicroak"
-    },
-    {
-      "name": "Magnezone",
-      "slug": "magnezone"
-    },
-    {
-      "name": "Tangrowth",
-      "slug": "tangrowth"
     },
     {
       "name": "Togekiss",
       "slug": "togekiss"
     },
     {
-      "name": "Gliscor",
-      "slug": "gliscor"
-    },
-    {
       "name": "Mamoswine",
       "slug": "mamoswine"
-    },
-    {
-      "name": "Porygon-Z",
-      "slug": "porygon-z"
-    },
-    {
-      "name": "Gallade",
-      "slug": "gallade"
-    },
-    {
-      "name": "Dusknoir",
-      "slug": "dusknoir"
     },
     {
       "name": "Froslass",
       "slug": "froslass"
     },
     {
-      "name": "Serperior",
-      "slug": "serperior"
-    },
-    {
-      "name": "Emboar",
-      "slug": "emboar"
-    },
-    {
-      "name": "Samurott",
-      "slug": "samurott"
-    },
-    {
-      "name": "Samurott (Hisui)",
-      "slug": "samurott-hisui"
+      "name": "Liepard",
+      "slug": "liepard"
     },
     {
       "name": "Excadrill",
@@ -571,104 +404,60 @@
       "slug": "conkeldurr"
     },
     {
-      "name": "Seismitoad",
-      "slug": "seismitoad"
+      "name": "Lilligant",
+      "slug": "lilligant"
     },
     {
-      "name": "Krookodile",
-      "slug": "krookodile"
+      "name": "Lilligant (Hisui)",
+      "slug": "lilligant-hisui"
     },
     {
       "name": "Scrafty",
       "slug": "scrafty"
     },
     {
-      "name": "Sigilyph",
-      "slug": "sigilyph"
-    },
-    {
       "name": "Cofagrigus",
       "slug": "cofagrigus"
     },
     {
-      "name": "Zoroark",
-      "slug": "zoroark"
-    },
-    {
-      "name": "Zoroark (Hisui)",
-      "slug": "zoroark-hisui"
-    },
-    {
-      "name": "Reuniclus",
-      "slug": "reuniclus"
-    },
-    {
-      "name": "Sawsbuck",
-      "slug": "sawsbuck"
-    },
-    {
-      "name": "Jellicent",
-      "slug": "jellicent-male"
+      "name": "Garbodor",
+      "slug": "garbodor"
     },
     {
       "name": "Eelektross",
       "slug": "eelektross"
     },
     {
-      "name": "Chandelure",
-      "slug": "chandelure"
+      "name": "Meowstic",
+      "slug": "meowstic-male"
     },
     {
-      "name": "Volcarona",
-      "slug": "volcarona"
-    },
-    {
-      "name": "Delphox",
-      "slug": "delphox"
-    },
-    {
-      "name": "Talonflame",
-      "slug": "talonflame"
-    },
-    {
-      "name": "Aegislash",
-      "slug": "aegislash-shield"
-    },
-    {
-      "name": "Dragalge",
-      "slug": "dragalge"
+      "name": "Malamar",
+      "slug": "malamar"
     },
     {
       "name": "Clawitzer",
       "slug": "clawitzer"
     },
     {
-      "name": "Heliolisk",
-      "slug": "heliolisk"
+      "name": "Klefki",
+      "slug": "klefki"
     },
     {
-      "name": "Tyrantrum",
-      "slug": "tyrantrum"
+      "name": "Incineroar",
+      "slug": "incineroar"
     },
     {
-      "name": "Hawlucha",
-      "slug": "hawlucha"
-    },
-    {
-      "name": "Noivern",
-      "slug": "noivern"
-    },
-    {
-      "name": "Vikavolt",
-      "slug": "vikavolt"
+      "name": "Primarina",
+      "slug": "primarina"
     },
     {
       "name": "Crabominable",
       "slug": "crabominable"
     },
     {
-      "name": "Ribombee",
-      "slug": "ribombee"
+      "name": "Oricorio",
+      "slug": "oricorio-baile"
     },
     {
       "name": "Lycanroc",
@@ -679,36 +468,12 @@
       "slug": "araquanid"
     },
     {
-      "name": "Lurantis",
-      "slug": "lurantis"
-    },
-    {
-      "name": "Salazzle",
-      "slug": "salazzle"
-    },
-    {
-      "name": "Bewear",
-      "slug": "bewear"
-    },
-    {
       "name": "Tsareena",
       "slug": "tsareena"
     },
     {
-      "name": "Pyukumuku",
-      "slug": "pyukumuku"
-    },
-    {
-      "name": "Togedemaru",
-      "slug": "togedemaru"
-    },
-    {
-      "name": "Drampa",
-      "slug": "drampa"
-    },
-    {
-      "name": "Dhelmise",
-      "slug": "dhelmise"
+      "name": "Comfey",
+      "slug": "comfey"
     },
     {
       "name": "Rillaboom",
@@ -723,140 +488,112 @@
       "slug": "inteleon"
     },
     {
-      "name": "Corviknight",
-      "slug": "corviknight"
+      "name": "Orbeetle",
+      "slug": "orbeetle"
     },
     {
-      "name": "Barraskewda",
-      "slug": "barraskewda"
+      "name": "Drednaw",
+      "slug": "drednaw"
     },
     {
-      "name": "Polteageist",
-      "slug": "polteageist"
+      "name": "Coalossal",
+      "slug": "coalossal"
     },
     {
-      "name": "Hatterene",
-      "slug": "hatterene"
+      "name": "Flapple",
+      "slug": "flapple"
+    },
+    {
+      "name": "Appletun",
+      "slug": "appletun"
+    },
+    {
+      "name": "Sandaconda",
+      "slug": "sandaconda"
+    },
+    {
+      "name": "Toxtricity",
+      "slug": "toxtricity-amped"
+    },
+    {
+      "name": "Centiskorch",
+      "slug": "centiskorch"
     },
     {
       "name": "Grimmsnarl",
       "slug": "grimmsnarl"
     },
     {
-      "name": "Cursola",
-      "slug": "cursola"
-    },
-    {
-      "name": "Sirfetch'd",
-      "slug": "sirfetchd"
+      "name": "Mr. Rime",
+      "slug": "mr-rime"
     },
     {
       "name": "Runerigus",
       "slug": "runerigus"
     },
     {
-      "name": "Falinks",
-      "slug": "falinks"
-    },
-    {
-      "name": "Eiscue",
-      "slug": "eiscue-ice"
+      "name": "Alcremie",
+      "slug": "alcremie"
     },
     {
       "name": "Indeedee",
       "slug": "indeedee-male"
     },
     {
-      "name": "Morpeko",
-      "slug": "morpeko-full-belly"
-    },
-    {
       "name": "Copperajah",
       "slug": "copperajah"
-    },
-    {
-      "name": "Dracozolt",
-      "slug": "dracozolt"
-    },
-    {
-      "name": "Arctozolt",
-      "slug": "arctozolt"
-    },
-    {
-      "name": "Duraludon",
-      "slug": "duraludon"
-    },
-    {
-      "name": "Kleavor",
-      "slug": "kleavor"
     },
     {
       "name": "Ursaluna",
       "slug": "ursaluna"
     },
     {
-      "name": "Pawmot",
-      "slug": "pawmot"
+      "name": "Basculegion",
+      "slug": "basculegion-male"
     },
     {
-      "name": "Maushold",
-      "slug": "maushold-family-of-four"
+      "name": "Sneasler",
+      "slug": "sneasler"
+    },
+    {
+      "name": "Quaquaval",
+      "slug": "quaquaval"
     },
     {
       "name": "Arboliva",
       "slug": "arboliva"
     },
     {
-      "name": "Garganacl",
-      "slug": "garganacl"
+      "name": "Armarouge",
+      "slug": "armarouge"
     },
     {
-      "name": "Kilowattrel",
-      "slug": "kilowattrel"
+      "name": "Ceruledge",
+      "slug": "ceruledge"
     },
     {
-      "name": "Toedscruel",
-      "slug": "toedscruel"
+      "name": "Dondozo",
+      "slug": "dondozo"
     },
     {
-      "name": "Scovillain",
-      "slug": "scovillain"
-    },
-    {
-      "name": "Tinkaton",
-      "slug": "tinkaton"
-    },
-    {
-      "name": "Palafin",
-      "slug": "palafin-zero"
-    },
-    {
-      "name": "Orthworm",
-      "slug": "orthworm"
-    },
-    {
-      "name": "Glimmora",
-      "slug": "glimmora"
-    },
-    {
-      "name": "Houndstone",
-      "slug": "houndstone"
-    },
-    {
-      "name": "Veluza",
-      "slug": "veluza"
+      "name": "Tatsugiri",
+      "slug": "tatsugiri-curly"
     },
     {
       "name": "Farigiraf",
       "slug": "farigiraf"
     },
     {
-      "name": "Gholdengo",
-      "slug": "gholdengo"
+      "name": "Dipplin",
+      "slug": "dipplin"
     },
     {
       "name": "Archaludon",
       "slug": "archaludon"
+    },
+    {
+      "name": "Hydrapple",
+      "slug": "hydrapple"
     }
   ]
 }

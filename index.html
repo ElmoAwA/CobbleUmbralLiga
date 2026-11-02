@@ -457,20 +457,31 @@ footer a { color: var(--text-dim); }
 <script>
 /* ---------------- DATA ---------------- */
 const ROSTER = [
-/* --- Prisión (reiniciada: ahora son los antiguos Reclutamiento + Prohibición) --- */
+/* --- Prisión --- */
 ["Golduck","prision","golduck"],
-["Eevee","prision","eevee"],["Vaporeon","prision","vaporeon"],["Jolteon","prision","jolteon"],["Flareon","prision","flareon"],
-["Espeon","prision","espeon"],["Umbreon","prision","umbreon"],
-["Slowking","prision","slowking"],["Slowking","prision","slowking-galar","Galar"],
-["Unown","prision","unown"],
+["Eevee","prision","eevee"],
+["Vaporeon","prision","vaporeon"],
+["Jolteon","prision","jolteon"],
+["Flareon","prision","flareon"],
+["Espeon","prision","espeon"],
+["Umbreon","prision","umbreon"],
+["Slowking","prision","slowking"],
+["Slowking","prision","slowking-galar","Galar"],
 ["Shedinja","prision","shedinja"],
 ["Lopunny","prision","lopunny"],
-["Leafeon","prision","leafeon"],["Glaceon","prision","glaceon"],
-["Rotom","prision","rotom"],["Rotom","prision","rotom-heat","Calor"],["Rotom","prision","rotom-wash","Lavado"],["Rotom","prision","rotom-frost","Hielo"],["Rotom","prision","rotom-fan","Ventilador"],["Rotom","prision","rotom-mow","Corte"],
+["Leafeon","prision","leafeon"],
+["Glaceon","prision","glaceon"],
+["Rotom","prision","rotom"],
+["Rotom","prision","rotom-heat","Calor"],
+["Rotom","prision","rotom-wash","Lavado"],
+["Rotom","prision","rotom-frost","Hielo"],
+["Rotom","prision","rotom-fan","Ventilador"],
+["Rotom","prision","rotom-mow","Corte"],
 ["Amoonguss","prision","amoonguss"],
 ["Floette","prision","floette"],
 ["Florges","prision","florges"],
 ["Sylveon","prision","sylveon"],
+["Wimpod","prision","wimpod"],
 ["Golisopod","prision","golisopod"],
 ["Dracovish","prision","dracovish"],
 ["Espathra","prision","espathra"],
@@ -488,12 +499,15 @@ const ROSTER = [
 ["Tapu Lele","legendario","tapu-lele"],
 ["Tapu Fini","legendario","tapu-fini"],
 ["Kubfu","legendario","kubfu"],
+["Urshifu","legendario","urshifu-single-strike","Estilo Brusco"],
+["Urshifu","legendario","urshifu-rapid-strike","Estilo Fluido"],
 ["Ogerpon","legendario","ogerpon"],
 
 /* --- Pseudolegendarios --- */
 ["Salamence","pseudo","salamence"],
 ["Hydreigon","pseudo","hydreigon"],
-["Goodra","pseudo","goodra"],["Goodra","pseudo","goodra-hisui","Hisui"],
+["Goodra","pseudo","goodra"],
+["Goodra","pseudo","goodra-hisui","Hisui"],
 ["Kommo-o","pseudo","kommo-o"],
 
 /* --- Ultraentes --- */
@@ -508,11 +522,13 @@ const ROSTER = [
 ["Beedrill","comun","beedrill"],
 ["Raichu","comun","raichu"],
 ["Sandslash","comun","sandslash"],
-["Ninetales","comun","ninetales"],["Ninetales","comun","ninetales-alola","Alola"],
+["Ninetales","comun","ninetales"],
+["Ninetales","comun","ninetales-alola","Alola"],
 ["Machamp","comun","machamp"],
 ["Gengar","comun","gengar"],
 ["Kingler","comun","kingler"],
-["Weezing","comun","weezing"],["Weezing","comun","weezing-galar","Galar"],
+["Weezing","comun","weezing"],
+["Weezing","comun","weezing-galar","Galar"],
 ["Gyarados","comun","gyarados"],
 ["Lapras","comun","lapras"],
 ["Ditto","comun","ditto"],
@@ -520,7 +536,8 @@ const ROSTER = [
 ["Snorlax","comun","snorlax"],
 
 /* --- Comunes: Gen 2 --- */
-["Typhlosion","comun","typhlosion"],["Typhlosion","comun","typhlosion-hisui","Hisui"],
+["Typhlosion","comun","typhlosion"],
+["Typhlosion","comun","typhlosion-hisui","Hisui"],
 ["Politoed","comun","politoed"],
 ["Jumpluff","comun","jumpluff"],
 ["Ursaring","comun","ursaring"],
@@ -552,7 +569,8 @@ const ROSTER = [
 ["Liepard","comun","liepard"],
 ["Excadrill","comun","excadrill"],
 ["Conkeldurr","comun","conkeldurr"],
-["Lilligant","comun","lilligant"],["Lilligant","comun","lilligant-hisui","Hisui"],
+["Lilligant","comun","lilligant"],
+["Lilligant","comun","lilligant-hisui","Hisui"],
 ["Scrafty","comun","scrafty"],
 ["Cofagrigus","comun","cofagrigus"],
 ["Garbodor","comun","garbodor"],
@@ -586,6 +604,7 @@ const ROSTER = [
 ["Sandaconda","comun","sandaconda"],
 ["Toxtricity","comun","toxtricity-amped"],
 ["Centiskorch","comun","centiskorch"],
+["Hatterene","comun","hatterene"],
 ["Grimmsnarl","comun","grimmsnarl"],
 ["Mr. Rime","comun","mr-rime"],
 ["Runerigus","comun","runerigus"],
@@ -608,7 +627,6 @@ const ROSTER = [
 ["Archaludon","comun","archaludon"],
 ["Hydrapple","comun","hydrapple"],
 ];
-
 const CATS = {
   prision:{label:"Prisión Umbral", plural:"prision"},
   reclutamiento:{label:"Reclutamiento Umbral", plural:"reclutamiento"},

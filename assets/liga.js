@@ -130,7 +130,7 @@ fetch(base + 'pokedex.json').then(r => r.json()).then(d => { dex = d; pinta(); }
   const a = document.createElement('p'); a.className = 'aviso px'; a.textContent = 'No se pudieron cargar las imágenes y los stats. Recarga la página; si abriste el archivo directo, usa ver-en-local.bat.'; $('main').prepend(a);
 });
 fetch('liga-feed.json', { cache: 'no-store' }).then(r => r.json()).then(f => {
-  if (f.temporada) { $('titulo').textContent = f.temporada.replace(/\s*·\s*/, ': '); document.title = f.temporada; }
+  if (f.temporada) { $('titulo').textContent = f.temporada.replace(/\s*·\s*/, ': '); }
   if (f.ultima_actualizacion) { $('novedad').hidden = false; $('novedad').textContent = 'Última novedad: ' + f.ultima_actualizacion; }
 }).catch(() => { });
 })();

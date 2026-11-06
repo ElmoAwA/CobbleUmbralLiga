@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Noviembre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Dracovish",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA añadió a Whimsicott",
   "prision_total": [
     {
       "name": "Golduck",
@@ -162,6 +162,11 @@
       "slug": "unown",
       "semana": 1,
       "placeholder": true
+    },
+    {
+      "name": "Whimsicott",
+      "slug": "whimsicott",
+      "semana": 1
     }
   ],
   "legendarios_total": [

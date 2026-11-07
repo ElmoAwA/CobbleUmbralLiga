@@ -13,6 +13,7 @@ let dex = {};
 
 // El placeholder de una categoría comunitaria todavía sin elegir es Unown.
 const sinElegir = e => e[0] === 'Unown' && (e[1] === 'reclutamiento' || e[1] === 'prohibicion');
+const sobra = e => sinElegir(e) && ROSTER.some(o => o[1] === e[1] && !sinElegir(o));
 function info(slug) {
   let s = slug.toLowerCase();
   if (dex[s]) return dex[s];
@@ -37,6 +38,7 @@ function tipos() {
   });
 }
 function pasa(e) {
+  if (sobra(e)) return false;
   if (st.cat !== 'todos' && st.cat !== e[1]) return false;
   if (st.q && !e[0].toLowerCase().includes(st.q)) return false;
   if (st.tipos.size) { const d = info(e[2]); if (sinElegir(e) || !d || !d.types.some(t => st.tipos.has(t))) return false; }

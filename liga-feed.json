@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Noviembre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA baneó a Dracovish",
+  "ultima_actualizacion": "Ticket de Liga: Mark606 baneó a Charizard",
   "prision_total": [
     {
       "name": "Golduck",
@@ -154,6 +154,10 @@
       "name": "Unown",
       "slug": "unown",
       "placeholder": true
+    },
+    {
+      "name": "Charizard",
+      "slug": "charizard"
     }
   ],
   "reclutamiento_total": [
@@ -230,10 +234,6 @@
     {
       "name": "Venusaur",
       "slug": "venusaur"
-    },
-    {
-      "name": "Charizard",
-      "slug": "charizard"
     },
     {
       "name": "Blastoise",

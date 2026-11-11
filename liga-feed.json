@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Noviembre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: Mark606 baneó a Charizard",
+  "ultima_actualizacion": "Ticket de Liga: ElmoAwA añadió a Corviknight",
   "prision_total": [
     {
       "name": "Golduck",
@@ -166,6 +166,11 @@
       "slug": "unown",
       "semana": 1,
       "placeholder": true
+    },
+    {
+      "name": "Corviknight",
+      "slug": "corviknight",
+      "semana": 1
     }
   ],
   "legendarios_total": [

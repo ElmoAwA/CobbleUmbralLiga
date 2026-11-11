@@ -168,6 +168,11 @@
       "placeholder": true
     },
     {
+      "name": "Chien-Pao",
+      "slug": "chien-pao",
+      "semana": 1
+    },
+    {
       "name": "Corviknight",
       "slug": "corviknight",
       "semana": 1

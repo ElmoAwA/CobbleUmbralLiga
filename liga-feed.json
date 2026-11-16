@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Noviembre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: ElmoAwA añadió a Corviknight",
+  "ultima_actualizacion": "Ticket de Liga: Chunderto baneó a Indeedee",
   "prision_total": [
     {
       "name": "Golduck",
@@ -158,6 +158,10 @@
     {
       "name": "Charizard",
       "slug": "charizard"
+    },
+    {
+      "name": "Indeedee",
+      "slug": "indeedee-male"
     }
   ],
   "reclutamiento_total": [
@@ -560,10 +564,6 @@
     {
       "name": "Alcremie",
       "slug": "alcremie"
-    },
-    {
-      "name": "Indeedee",
-      "slug": "indeedee-male"
     },
     {
       "name": "Copperajah",

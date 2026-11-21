@@ -1,7 +1,7 @@
 {
   "temporada": "Liga Umbral · Regulación Noviembre 2026",
   "semana_actual": 1,
-  "ultima_actualizacion": "Ticket de Liga: Chunderto baneó a Indeedee",
+  "ultima_actualizacion": "Ticket de Liga: Pra1ds baneó a Pelipper",
   "prision_total": [
     {
       "name": "Golduck",
@@ -162,6 +162,10 @@
     {
       "name": "Indeedee",
       "slug": "indeedee-male"
+    },
+    {
+      "name": "Pelipper",
+      "slug": "pelipper"
     }
   ],
   "reclutamiento_total": [
@@ -356,10 +360,6 @@
     {
       "name": "Ludicolo",
       "slug": "ludicolo"
-    },
-    {
-      "name": "Pelipper",
-      "slug": "pelipper"
     },
     {
       "name": "Slaking",
